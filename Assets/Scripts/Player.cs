@@ -22,87 +22,96 @@ public class Player : MonoBehaviour
 
     private IInteractable _curInteractable;
 
-    private void Update()
+    [SerializeField]
+    private GameObject _renderer;
+    private Animator _animator;
+    private Rigidbody2D _rigidbody;
+    public Vector2 _movementVector;
+
+
+    private KeyCode[] _keyCodes = new KeyCode[5];
+
+
+    private void Awake()
     {
-        //Player 1 controls
+        _animator = _renderer.GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+
         if (_player == Players.Player1)
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(Vector2.up * Time.deltaTime * _speed);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(Vector2.down * Time.deltaTime * _speed);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(Vector2.left * Time.deltaTime * _speed);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(Vector2.right * Time.deltaTime * _speed);
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                //Do Action here
-                if (_curInteractable == null)
-                {
-                    var overlappingObjects = Physics2D.OverlapBoxAll(transform.position + transform.TransformVector(_boxOffset), _boxSize / 2f, 0, _intaractableMask);
-                    if (overlappingObjects.Length <= 0) return;
-
-                    var obj = overlappingObjects[0];
-                    // Debug.Log($"{obj.transform.name}");
-                    _curInteractable = obj.GetComponent<IInteractable>();
-                    _curInteractable?.Interact(_hand);
-                }
-                else
-                {
-                    _curInteractable.StopInteraction();
-                    _curInteractable = null;
-                }
-            }
-        }
-
-        //Player 2 controls
-        if (_player == Players.Player2)
+            _keyCodes[0] = KeyCode.W;
+            _keyCodes[1] = KeyCode.S;
+            _keyCodes[2] = KeyCode.A;
+            _keyCodes[3] = KeyCode.D;
+            _keyCodes[4] = KeyCode.E;
+        } else
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                transform.Translate(Vector2.up * Time.deltaTime * _speed);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                transform.Translate(Vector2.down * Time.deltaTime * _speed);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.Translate(Vector2.left * Time.deltaTime * _speed);
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.Translate(Vector2.right * Time.deltaTime * _speed);
-            }
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                //Do Action here
-                if (_curInteractable == null)
-                {
-                    var overlappingObjects = Physics2D.OverlapBoxAll(transform.position + transform.TransformVector(_boxOffset), _boxSize / 2f, 0, _intaractableMask);
-                    if (overlappingObjects.Length <= 0) return;
+            _keyCodes[0] = KeyCode.UpArrow;
+            _keyCodes[1] = KeyCode.DownArrow;
+            _keyCodes[2] = KeyCode.LeftArrow;
+            _keyCodes[3] = KeyCode.RightArrow;
+            _keyCodes[4] = KeyCode.Return;
+        }
+    }
 
-                    var obj = overlappingObjects[0];
-                    // Debug.Log($"{obj.transform.name}");
-                    _curInteractable = obj.GetComponent<IInteractable>();
-                    _curInteractable?.Interact(_hand);
-                }
-                else
-                {
-                    _curInteractable.StopInteraction();
-                    _curInteractable = null;
-                }
+    private void Update()
+    {
+        Vector2 _direction = Vector2.zero;
+
+        
+
+        if (Input.GetKey(_keyCodes[0]))
+        {
+            transform.Translate(Vector3.up.normalized * Time.deltaTime * _speed);
+            _direction.y = 1;
+        }
+        if (Input.GetKey(_keyCodes[1]))
+        {
+            transform.Translate(Vector3.down.normalized * Time.deltaTime * _speed);
+            _direction.y = -1;
+
+
+        }
+        if (Input.GetKey(_keyCodes[2]))
+        {
+            transform.Translate(Vector3.left.normalized * Time.deltaTime * _speed);
+            _direction.x = -1;
+
+
+        }
+        if (Input.GetKey(_keyCodes[3]))
+        {
+            transform.Translate(Vector3.right.normalized * Time.deltaTime * _speed);
+            _direction.x = 1;
+        }
+
+
+        _animator.SetFloat("xValue", _direction.x);
+        _animator.SetFloat("yValue", _direction.y);
+        _animator.SetFloat("velocity", _direction.sqrMagnitude);
+
+
+        if (Input.GetKeyDown(_keyCodes[4]))
+        {
+            //Do Action here
+            if (_curInteractable == null)
+            {
+                var overlappingObjects = Physics2D.OverlapBoxAll(transform.position + transform.TransformVector(_boxOffset), _boxSize / 2f, 0, _intaractableMask);
+                if (overlappingObjects.Length <= 0) return;
+
+                var obj = overlappingObjects[0];
+                // Debug.Log($"{obj.transform.name}");
+                _curInteractable = obj.GetComponent<IInteractable>();
+                _curInteractable?.Interact(_hand);
+            }
+            else
+            {
+                _curInteractable.StopInteraction();
+                _curInteractable = null;
             }
         }
+
+
     }
 
     private void OnDrawGizmosSelected()
