@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
             _keyCodes[2] = KeyCode.A;
             _keyCodes[3] = KeyCode.D;
             _keyCodes[4] = KeyCode.E;
-        } else
+        }
+        else
         {
             _keyCodes[0] = KeyCode.UpArrow;
             _keyCodes[1] = KeyCode.DownArrow;
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //movement
         if (Input.GetKey(_keyCodes[0]) || Input.GetKey(_keyCodes[1]) || Input.GetKey(_keyCodes[2]) || Input.GetKey(_keyCodes[3]))
         {
             Vector2 currentPos = _rigidbody.position;
@@ -70,6 +72,27 @@ public class Player : MonoBehaviour
             Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
             isoRenderer.SetDirection(movement);
             _rigidbody.MovePosition(newPos);
+        }
+
+        //Action (interact)
+        if (Input.GetKeyDown(_keyCodes[4]))
+        {
+            //Do Action here
+            if (_curInteractable == null)
+            {
+                var overlappingObjects = Physics2D.OverlapBoxAll(transform.position + transform.TransformVector(_boxOffset), _boxSize / 2f, 0, _intaractableMask);
+                if (overlappingObjects.Length <= 0) return;
+
+                var obj = overlappingObjects[0];
+                // Debug.Log($"{obj.transform.name}");
+                _curInteractable = obj.GetComponent<IInteractable>();
+                _curInteractable?.Interact(_hand);
+            }
+            else
+            {
+                _curInteractable.StopInteraction();
+                _curInteractable = null;
+            }
         }
     }
 
