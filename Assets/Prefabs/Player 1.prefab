@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 1828822148653981343}
   - component: {fileID: 1828822148653981337}
   - component: {fileID: 3979335790799402691}
-  - component: {fileID: 409456230}
+  - component: {fileID: 1458090825716896352}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -258,9 +258,9 @@ SortingGroup:
   m_GameObject: {fileID: 1828822148653981338}
   m_Enabled: 1
   m_SortingLayerID: 2130146985
-  m_SortingLayer: 0
-  m_SortingOrder: 2
---- !u!114 &409456230
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+--- !u!114 &1458090825716896352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,3 +280,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _hand: {fileID: 0}
+  _renderer: {fileID: 1828822147058208337}
+  _movementVector: {x: 0, y: 0}
