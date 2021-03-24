@@ -31,11 +31,14 @@ public class Player : MonoBehaviour
 
     private KeyCode[] _keyCodes = new KeyCode[5];
 
+    IsometricCharacterRenderer isoRenderer;
 
     private void Awake()
     {
         _animator = _renderer.GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        isoRenderer = GetComponentInChildren<IsometricCharacterRenderer>();
 
         if (_player == Players.Player1)
         {
@@ -44,7 +47,8 @@ public class Player : MonoBehaviour
             _keyCodes[2] = KeyCode.A;
             _keyCodes[3] = KeyCode.D;
             _keyCodes[4] = KeyCode.E;
-        } else
+        }
+        else
         {
             _keyCodes[0] = KeyCode.UpArrow;
             _keyCodes[1] = KeyCode.DownArrow;
@@ -54,43 +58,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Vector2 _direction = Vector2.zero;
-
-        
-
-        if (Input.GetKey(_keyCodes[0]))
+        //movement
+        if (Input.GetKey(_keyCodes[0]) || Input.GetKey(_keyCodes[1]) || Input.GetKey(_keyCodes[2]) || Input.GetKey(_keyCodes[3]))
         {
-            transform.Translate(Vector3.up.normalized * Time.deltaTime * _speed);
-            _direction.y = 1;
-        }
-        if (Input.GetKey(_keyCodes[1]))
-        {
-            transform.Translate(Vector3.down.normalized * Time.deltaTime * _speed);
-            _direction.y = -1;
-
-
-        }
-        if (Input.GetKey(_keyCodes[2]))
-        {
-            transform.Translate(Vector3.left.normalized * Time.deltaTime * _speed);
-            _direction.x = -1;
-
-
-        }
-        if (Input.GetKey(_keyCodes[3]))
-        {
-            transform.Translate(Vector3.right.normalized * Time.deltaTime * _speed);
-            _direction.x = 1;
+            Vector2 currentPos = _rigidbody.position;
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
+            inputVector = Vector2.ClampMagnitude(inputVector, 1);
+            Vector2 movement = inputVector * _speed;
+            Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
+            isoRenderer.SetDirection(movement);
+            _rigidbody.MovePosition(newPos);
         }
 
-
-        _animator.SetFloat("xValue", _direction.x);
-        _animator.SetFloat("yValue", _direction.y);
-        _animator.SetFloat("velocity", _direction.sqrMagnitude);
-
-
+        //Action (interact)
         if (Input.GetKeyDown(_keyCodes[4]))
         {
             //Do Action here
@@ -110,8 +94,6 @@ public class Player : MonoBehaviour
                 _curInteractable = null;
             }
         }
-
-
     }
 
     private void OnDrawGizmosSelected()
