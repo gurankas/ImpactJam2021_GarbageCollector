@@ -184,6 +184,11 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1 &1219648219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1828822147058208337, guid: dbaf652ed826f411f8804179ed9c986f, type: 3}
+  m_PrefabInstance: {fileID: 3979335789427570846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3339481644816344577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1828822148653981343, guid: dbaf652ed826f411f8804179ed9c986f, type: 3}
@@ -1705,6 +1710,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 409456230, guid: dbaf652ed826f411f8804179ed9c986f, type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 1219648219}
     - target: {fileID: 1828822148653981338, guid: dbaf652ed826f411f8804179ed9c986f, type: 3}
       propertyPath: m_Name
       value: Player 1
