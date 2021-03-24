@@ -37,17 +37,17 @@ public class TrashManager : MonoBehaviour
 
     private static void populateList()
     {
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.MILK, "Milk carton", TRASHCATS.RECYCLABLE, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.MASON, "Mason jar", TRASHCATS.RECYCLABLE, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.CEREAL, "Cereal box", TRASHCATS.RECYCLABLE, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.SODA, "Soda can", TRASHCATS.RECYCLABLE, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.NEWSPAPER, "Newspaper", TRASHCATS.RECYCLABLE, "A description", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.MILK, "Milk carton", TRASHCATS.RECYCLABLE, "Paper", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.MASON, "Mason jar", TRASHCATS.RECYCLABLE, "Glass", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.CEREAL, "Cereal box", TRASHCATS.RECYCLABLE, "Cardboard", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.SODA, "Soda can", TRASHCATS.RECYCLABLE, "Aluminum", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.NEWSPAPER, "Newspaper", TRASHCATS.RECYCLABLE, "Paper", 200, 100));
 
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.PIZZA, "Empty pizza box", TRASHCATS.TRASH, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.BANANA, "Bananas peels", TRASHCATS.TRASH, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.STRAW, "Plastic straw", TRASHCATS.TRASH, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.BAG, "Plastic bag", TRASHCATS.TRASH, "A description", 200, 100));
-        _typeToCatMap.Add(new itemDetails(TRASHTYPE.WRAP, "Plastic cling wrap", TRASHCATS.TRASH, "A description", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.PIZZA, "Empty pizza box", TRASHCATS.TRASH, "Cardboard", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.BANANA, "Bananas peels", TRASHCATS.TRASH, "Fruit", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.STRAW, "Plastic straw", TRASHCATS.TRASH, "Plastic", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.BAG, "Grocery bag", TRASHCATS.TRASH, "Plastic", 200, 100));
+        _typeToCatMap.Add(new itemDetails(TRASHTYPE.WRAP, "Cling wrap", TRASHCATS.TRASH, "Plastic", 200, 100));
     }
 
 

@@ -11,13 +11,25 @@ public class InfoWindow : MonoBehaviour
     public TMP_Text description;
 
     public GameObject cardDetailPrefab;
-    public GameObject content;
+    public GameObject contentRecylable;
+    public GameObject contentTrash;
     public GameObject playButton;
 
 
     public void addCardDetail(TrashManager.TRASHTYPE type)
     {
         TrashManager.itemDetails details = TrashManager.getDetails(type);
+
+        GameObject content;
+        Debug.Log(details.category);
+        if (details.category == TrashManager.TRASHCATS.RECYCLABLE)
+        {
+            content = contentRecylable;
+        }
+        else
+        {
+            content = contentTrash;
+        }
 
         GameObject _newCard = Instantiate(cardDetailPrefab, content.transform);
         _newCard.transform.GetChild(0).GetComponent<Image>().sprite = details.icon;

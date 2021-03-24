@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public int levelNumber = 0;
 
-    public GameObject recipeContent;
+    public GameObject recyclableList;
+    public GameObject trashList;
     public GameObject recipeCardPrefab;
 
     public void OnEnable() {
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         TrashManager.itemDetails details = TrashManager.getDetails(type);
 
-        GameObject _newCard = Instantiate(recipeCardPrefab, recipeContent.transform);
+        GameObject _newCard = Instantiate(recipeCardPrefab, recyclableList.transform);
         _newCard.transform.GetChild(0).GetComponent<Image>().sprite = details.icon;
         _newCard.transform.GetChild(1).GetComponent<TMP_Text>().text = details.name;
     }

@@ -13,12 +13,18 @@ public class LevelsManager : MonoBehaviour
 
     private void Awake()
     {
-        LevelInfo newLevel = new LevelInfo("Level 1", "Interesting lore of first level");
+        LevelInfo newLevel = new LevelInfo("Level 1", "Let's start with the basics!");
         newLevel.addType(TrashManager.TRASHTYPE.MILK);
-        newLevel.addType(TrashManager.TRASHTYPE.BAG);
+        newLevel.addType(TrashManager.TRASHTYPE.CEREAL);
         newLevel.addType(TrashManager.TRASHTYPE.MASON);
+        newLevel.addType(TrashManager.TRASHTYPE.SODA);
+        newLevel.addType(TrashManager.TRASHTYPE.NEWSPAPER);
+        newLevel.addType(TrashManager.TRASHTYPE.PIZZA);
+        newLevel.addType(TrashManager.TRASHTYPE.BANANA);
         newLevel.addType(TrashManager.TRASHTYPE.STRAW);
+        newLevel.addType(TrashManager.TRASHTYPE.BAG);
         newLevel.addType(TrashManager.TRASHTYPE.WRAP);
+
 
         allLevels.Add(newLevel);
 
