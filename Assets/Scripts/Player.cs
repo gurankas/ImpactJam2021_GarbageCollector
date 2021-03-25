@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private KeyCode[] _keyCodes = new KeyCode[5];
     private IsometricCharacterRenderer _isoRenderer;
+    private Pickable _currentItem;
 
     private void Awake()
     {
@@ -68,6 +69,21 @@ public class Player : MonoBehaviour
         Debug.DrawRay(_hand.position, direction * _raycastLength, Color.red, .5f);
         var hitResult = Physics2D.Raycast(_hand.position, direction, _raycastLength, _intaractableMask);
         Debug.Log($"{hitResult.collider.gameObject.name}");
+        if (hitResult.collider.gameObject != null)
+        {
+            _currentItem = hitResult.collider.gameObject.GetComponent<Pickable>();
+            _currentItem.DisableOutlineWhenFar(_raycastLength, this);
+        }
+        else
+        {
+            _currentItem = null;
+        }
+        var nearbyPickableOutline = hitResult.collider.gameObject.GetComponent<Outline>();
+        if (nearbyPickableOutline != null)
+        {
+            nearbyPickableOutline.enabled = true;
+        }
+        //TODO: enable and disable outline
     }
 
     private Vector2 DetermineDirection(int lastDirection)

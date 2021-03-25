@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: 0
-  _speed: 3
+  _speed: 8
   _boxOffset: {x: 0, y: -0.1, z: 0}
   _boxSize: {x: 0.6, y: 0.6, z: 0}
   _intaractableMask:
@@ -312,5 +312,4 @@ MonoBehaviour:
     m_Bits: 128
   _hand: {fileID: 1963223367}
   _renderer: {fileID: 7377484508212287941}
-  _raycastLength: 0
-  _movementVector: {x: 0, y: 0}
+  _raycastLength: 0.4
