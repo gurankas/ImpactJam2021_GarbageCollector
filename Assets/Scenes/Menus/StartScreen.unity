@@ -454,12 +454,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 417598752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c4009745b8b2f4eaabdf6f2b88ab04, type: 3}
+  m_Script: {fileID: 11500000, guid: db6fdb8f27f7c477998e71de155d8c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelectorScene: {fileID: 102900000, guid: a18d1257f5e70184faa87a3235f8b5e5,
-    type: 3}
-  levelInfoWindow: {fileID: 0}
 --- !u!114 &417598755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,14 +503,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 417598754}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: loadLevelSelector
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LevelSelection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &417598756
