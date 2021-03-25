@@ -21,7 +21,6 @@ public class InfoWindow : MonoBehaviour
         TrashManager.itemDetails details = TrashManager.getDetails(type);
 
         GameObject content;
-        Debug.Log(details.category);
         if (details.category == TrashManager.TRASHCATS.RECYCLABLE)
         {
             content = contentRecylable;

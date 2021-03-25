@@ -32,8 +32,17 @@ public class GameManager : MonoBehaviour
     public void addCardDetail(TrashManager.TRASHTYPE type)
     {
         TrashManager.itemDetails details = TrashManager.getDetails(type);
+        GameObject content;
+        if (details.category == TrashManager.TRASHCATS.RECYCLABLE)
+        {
+            content = recyclableList;
+        }
+        else
+        {
+            content = trashList;
+        }
 
-        GameObject _newCard = Instantiate(recipeCardPrefab, recyclableList.transform);
+        GameObject _newCard = Instantiate(recipeCardPrefab, content.transform);
         _newCard.transform.GetChild(0).GetComponent<Image>().sprite = details.icon;
         _newCard.transform.GetChild(1).GetComponent<TMP_Text>().text = details.name;
     }
