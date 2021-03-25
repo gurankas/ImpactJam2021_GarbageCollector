@@ -6,12 +6,15 @@ public class Pickable : MonoBehaviour, IInteractable
 
     private Transform _holder;
 
+    private SpriteRenderer _sr;
+
     [SerializeField]
     private float _lerpSpeed = 8f;
 
     public void Interact(Transform attachTransform)
     {
         _holder = attachTransform;
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -24,5 +27,10 @@ public class Pickable : MonoBehaviour, IInteractable
     public void StopInteraction()
     {
         _holder = null;
+    }
+
+    public void ChangeSortingOrder(int sortingOrder)
+    {
+        _sr.sortingOrder = sortingOrder;
     }
 }
