@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject trashList;
     public GameObject recipeCardPrefab;
 
-    public void OnEnable() {
+    public void Start() {
         populateReceipeList();
     }
 

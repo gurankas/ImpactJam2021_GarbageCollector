@@ -37,4 +37,19 @@ public class InfoWindow : MonoBehaviour
         _newCard.transform.GetChild(2).GetComponent<TMP_Text>().text = details.description;
     }
 
+
+    public void CloseWindow()
+    {
+        for (int i = 0; i < contentRecylable.transform.childCount; i++)
+        {
+            Destroy(contentRecylable.transform.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < contentTrash.transform.childCount; i++)
+        {
+            Destroy(contentRecylable.transform.GetChild(i).gameObject);
+        }
+
+        this.gameObject.SetActive(false);
+    }
+
 }

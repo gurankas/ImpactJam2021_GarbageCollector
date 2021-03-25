@@ -598,9 +598,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5018878692775321188}
-        m_TargetAssemblyTypeName: ButtonLoader, Assembly-CSharp
-        m_MethodName: closeLevelWindow
+      - m_Target: {fileID: 2105899328}
+        m_TargetAssemblyTypeName: InfoWindow, Assembly-CSharp
+        m_MethodName: CloseWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
