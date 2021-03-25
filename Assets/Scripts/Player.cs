@@ -58,7 +58,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    //All input handling should be in Update
+    private void Update()
     {
         //movement
         if (Input.GetKey(_keyCodes[0]) || Input.GetKey(_keyCodes[1]) || Input.GetKey(_keyCodes[2]) || Input.GetKey(_keyCodes[3]))
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour
             if (_curInteractable == null)
             {
                 var overlappingObjects = Physics2D.OverlapBoxAll(transform.position + transform.TransformVector(_boxOffset), _boxSize / 2f, 0, _intaractableMask);
+                Debug.Log($"{overlappingObjects.Length}");
                 if (overlappingObjects.Length <= 0) return;
 
                 var obj = overlappingObjects[0];
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                Debug.Log($"Interaction Stopped");
                 _curInteractable.StopInteraction();
                 _curInteractable = null;
             }
