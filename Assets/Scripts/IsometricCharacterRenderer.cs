@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class IsometricCharacterRenderer : MonoBehaviour
 {
 
     public static readonly string[] staticDirections = { "Static N", "Static NW", "Static W", "Static SW", "Static S", "Static SE", "Static E", "Static NE" };
-    public static readonly string[] runDirections = {"Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE"};
+    public static readonly string[] runDirections = { "Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE" };
 
     Animator animator;
     int lastDirection;
@@ -19,7 +20,8 @@ public class IsometricCharacterRenderer : MonoBehaviour
     }
 
 
-    public void SetDirection(Vector2 direction){
+    public void SetDirection(Vector2 direction)
+    {
 
         //use the Run states by default
         string[] directionArray = null;
@@ -48,7 +50,8 @@ public class IsometricCharacterRenderer : MonoBehaviour
 
     //this function converts a Vector2 direction to an index to a slice around a circle
     //this goes in a counter-clockwise direction.
-    public static int DirectionToIndex(Vector2 dir, int sliceCount){
+    public static int DirectionToIndex(Vector2 dir, int sliceCount)
+    {
         //get the normalized direction
         Vector2 normDir = dir.normalized;
         //calculate how many degrees one slice is
@@ -62,7 +65,8 @@ public class IsometricCharacterRenderer : MonoBehaviour
         //add the halfslice offset
         angle += halfstep;
         //if angle is negative, then let's make it positive by adding 360 to wrap it around.
-        if (angle < 0){
+        if (angle < 0)
+        {
             angle += 360;
         }
         //calculate the amount of steps required to reach this angle

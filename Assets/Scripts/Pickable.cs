@@ -1,39 +1,36 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Pickable : MonoBehaviour, IInteractable
 {
-    [SerializeField]
-    private bool _isG = false;
-
-    private Rigidbody _rigidBody;
+    private Rigidbody2D _rigidBody;
 
     private Transform _holder;
+
+    private SpriteRenderer _sr;
 
     [SerializeField]
     private float _lerpSpeed = 8f;
 
-    private void Awake()
-    {
-        _rigidBody = GetComponent<Rigidbody>();
-    }
-
     public void Interact(Transform attachTransform)
     {
         _holder = attachTransform;
-        _rigidBody.isKinematic = true;
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         if (_holder == null) return;
 
-        transform.position = Vector3.Lerp(transform.position, _holder.position, _lerpSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, _holder.position, _lerpSpeed * Time.deltaTime);
     }
 
     public void StopInteraction()
     {
         _holder = null;
-        _rigidBody.isKinematic = false;
+    }
+
+    public void ChangeSortingOrder(int sortingOrder)
+    {
+        _sr.sortingOrder = sortingOrder;
     }
 }
