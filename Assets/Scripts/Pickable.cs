@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Pickable : MonoBehaviour, IInteractable
 {
     private Rigidbody2D _rigidBody;
