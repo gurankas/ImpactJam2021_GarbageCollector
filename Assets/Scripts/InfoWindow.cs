@@ -45,7 +45,7 @@ public class InfoWindow : MonoBehaviour
         }
         for (int i = 0; i < contentTrash.transform.childCount; i++)
         {
-            Destroy(contentRecylable.transform.GetChild(i).gameObject);
+            Destroy(contentTrash.transform.GetChild(i).gameObject);
         }
 
         this.gameObject.SetActive(false);
