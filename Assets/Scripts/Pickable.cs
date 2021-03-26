@@ -13,14 +13,18 @@ public class Pickable : Interactable
 
     private SpriteRenderer _sr;
 
-    public bool onGround { get; set; }
+    [SerializeField]
+    public bool recycleable = false;
+
+    [HideInInspector]
+    public bool Grounded = true;
 
     [SerializeField]
     private float _lerpSpeed = 8f;
 
-    public override void Interact(Transform attachTransform)
+    public override void Interact(Transform attachTransform, Interactable otherObject)
     {
-        base.Interact(attachTransform);
+        base.Interact(attachTransform, otherObject);
         _holder = attachTransform;
         _sr = GetComponent<SpriteRenderer>();
     }
@@ -42,5 +46,10 @@ public class Pickable : Interactable
     {
         base.ChangeSortingOrder(sortingOrder);
         _sr.sortingOrder = sortingOrder;
+    }
+
+    public void SelfDestruct()
+    {
+        Destroy(gameObject);
     }
 }

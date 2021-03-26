@@ -9,12 +9,6 @@ public class Player : MonoBehaviour
     private float _speed = 5.0f;
 
     [SerializeField]
-    private Vector3 _boxOffset;
-
-    [SerializeField]
-    private Vector3 _boxSize;
-
-    [SerializeField]
     private LayerMask _intaractableMask;
 
     [SerializeField]
@@ -33,6 +27,8 @@ public class Player : MonoBehaviour
     private IInteractable _curInteractable;
     private Animator _animator;
     private Rigidbody2D _rigidbody;
+    private Vector3 _boxOffset;
+    private Vector3 _boxSize;
     private KeyCode[] _keyCodes = new KeyCode[5];
     private IsometricCharacterRenderer _isoRenderer;
     private Interactable _currentInteractItem;
@@ -67,7 +63,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Movement();
-        //OverlapBoxInteract();
         DetectPickups();
         DetectInteractibles();
         RaycastInteract();
@@ -123,20 +118,21 @@ public class Player : MonoBehaviour
             //interaction based items
             if (_currentInteractItem != null)
             {
-                _currentInteractItem.Interact(_hand);
-                Debug.Log($"Interacting with {_currentPickupItem.name}");
+                _currentInteractItem.Interact(_hand, _currentPickupItem);
+                // Debug.Log($"Interacting with {_currentPickupItem.name}");
             }
 
+            // Debug.Log($"item on the ground {_currentPickupItem.Grounded}");
             //pickup item actions
-            if (_currentPickupItem.onGround == true)
+            if (_currentPickupItem.Grounded == true)
             {
-                _currentPickupItem.Interact(_hand);
-                Debug.Log($"Picking up {_currentPickupItem.name}");
-                _currentPickupItem.onGround = false;
+                _currentPickupItem.Interact(_hand, null);
+                // Debug.Log($"Picking up {_currentPickupItem.name}");
+                _currentPickupItem.Grounded = false;
             }
             else
             {
-                _currentPickupItem.onGround = true;
+                _currentPickupItem.Grounded = true;
                 _currentPickupItem.StopInteraction();
             }
         }
@@ -198,8 +194,8 @@ public class Player : MonoBehaviour
                 var obj = overlappingObjects[0];
                 // Debug.Log($"{obj.transform.name}");
                 _curInteractable = obj.GetComponent<IInteractable>();
-                _curInteractable?.Interact(_hand);
-                _currentInteractItem.Interact(_hand);
+                _curInteractable?.Interact(_hand, null);
+                _currentInteractItem.Interact(_hand, null);
             }
             else
             {

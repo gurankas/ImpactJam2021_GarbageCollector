@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 9041906240293737814}
-  _biodegradable: 1
+  _recycleable: 1
 --- !u!61 &4548334139406734611
 BoxCollider2D:
   m_ObjectHideFlags: 0

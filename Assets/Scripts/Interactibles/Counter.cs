@@ -7,7 +7,7 @@ public class Counter : Interactable
         base.Awake();
     }
 
-    public override void Interact(Transform other)
+    public override void Interact(Transform other, Interactable otherObject)
     {
         throw new System.NotImplementedException();
     }

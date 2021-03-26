@@ -15,9 +15,8 @@ public class Interactable : MonoBehaviour, IInteractable
 
     }
 
-    virtual public void Interact(Transform other)
+    virtual public void Interact(Transform other, Interactable otherObject)
     {
-        Debug.Log($"You're interacting with {other.name}");
     }
 
     virtual public void StopInteraction()
