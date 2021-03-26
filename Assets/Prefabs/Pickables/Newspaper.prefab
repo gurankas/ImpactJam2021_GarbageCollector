@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656447772968553311}
   - component: {fileID: 3019965315606533145}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7304836495844262045}
   - component: {fileID: 7304836495844262044}
   - component: {fileID: 7304836495844262016}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Newspaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

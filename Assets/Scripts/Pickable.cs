@@ -13,6 +13,8 @@ public class Pickable : Interactable
 
     private SpriteRenderer _sr;
 
+    public bool onGround { get; set; }
+
     [SerializeField]
     private float _lerpSpeed = 8f;
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2726490723541382522}
   - component: {fileID: 2726490723541382523}
   - component: {fileID: 2726490723541382503}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Milk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7148853008681294067}
   - component: {fileID: 5523677474163197225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

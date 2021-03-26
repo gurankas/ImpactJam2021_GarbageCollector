@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7569358790324553002}
   - component: {fileID: 7569358790324553003}
   - component: {fileID: 7569358790324553015}
-  m_Layer: 7
-  m_Name: TestTilePrefab
+  m_Layer: 8
+  m_Name: TestTilePrefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e4f3b52942827b285b13405a574506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _highlight: {fileID: 0}
   _lerpSpeed: 8
 --- !u!61 &7569358790324553015
 BoxCollider2D:

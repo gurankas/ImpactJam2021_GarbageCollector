@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4909890427060532572}
   - component: {fileID: 6624101923706861385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8813782454933570278}
   - component: {fileID: 8813782454933570279}
   - component: {fileID: 8813782454933570299}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Pizza
   m_TagString: Untagged
   m_Icon: {fileID: 0}

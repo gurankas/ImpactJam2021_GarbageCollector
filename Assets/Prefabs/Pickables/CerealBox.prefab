@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7002945794776511341}
   - component: {fileID: 7002945794776511340}
   - component: {fileID: 7002945794776511344}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: CerealBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4630654554298600791}
   - component: {fileID: 2105377436133045100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

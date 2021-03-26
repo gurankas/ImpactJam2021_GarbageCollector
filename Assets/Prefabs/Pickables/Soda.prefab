@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8452137771257385360}
   - component: {fileID: 2765849274219201395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8678989071984641468}
   - component: {fileID: 8678989071984641469}
   - component: {fileID: 8678989071984641441}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Soda
   m_TagString: Untagged
   m_Icon: {fileID: 0}

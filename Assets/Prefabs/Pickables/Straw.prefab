@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2562817059804709114}
   - component: {fileID: 2562817059804709115}
   - component: {fileID: 2562817059804709095}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Straw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6998968031587590511}
   - component: {fileID: 1439483442613945359}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

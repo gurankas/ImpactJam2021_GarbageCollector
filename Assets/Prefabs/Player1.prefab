@@ -310,6 +310,9 @@ MonoBehaviour:
   _intaractableMask:
     serializedVersion: 2
     m_Bits: 128
+  _pickupMask:
+    serializedVersion: 2
+    m_Bits: 256
   _hand: {fileID: 1963223367}
   _renderer: {fileID: 7377484508212287941}
   _raycastLength: 0.4

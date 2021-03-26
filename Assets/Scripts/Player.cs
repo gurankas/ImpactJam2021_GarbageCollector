@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -19,6 +18,9 @@ public class Player : MonoBehaviour
     private LayerMask _intaractableMask;
 
     [SerializeField]
+    private LayerMask _pickupMask;
+
+    [SerializeField]
     private Transform _hand;
 
     [SerializeField]
@@ -27,12 +29,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _raycastLength;
 
+    //current item for old iteraction system via overlap box
     private IInteractable _curInteractable;
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private KeyCode[] _keyCodes = new KeyCode[5];
     private IsometricCharacterRenderer _isoRenderer;
-    private Interactable _currentItem;
+    private Interactable _currentInteractItem;
+    private Pickable _currentPickupItem;
 
     private void Awake()
     {
@@ -63,11 +67,39 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Movement();
-        //Interact();
+        //OverlapBoxInteract();
+        DetectPickups();
+        DetectInteractibles();
+        RaycastInteract();
+    }
 
-        if (_currentItem != null)
+    private void DetectPickups()
+    {
+        if (_currentPickupItem != null)
         {
-            _currentItem.SetActiveHighlight(false);
+            _currentPickupItem.SetActiveHighlight(false);
+        }
+        Vector2 direction = DetermineDirection(_isoRenderer.LastDirection);
+        // Debug.DrawRay(_hand.position, direction * _raycastLength, Color.red, .5f);
+        var hitResult = Physics2D.Raycast(_hand.position, direction, _raycastLength, _pickupMask);
+        //Debug.Log($"{hitResult.collider.gameObject.name}");
+        if (hitResult.collider?.gameObject != null)
+        {
+            _currentPickupItem = hitResult.collider.gameObject.GetComponent<Pickable>();
+            _currentPickupItem.SetActiveHighlight(true);
+        }
+
+        else
+        {
+            _currentPickupItem = null;
+        }
+    }
+
+    private void DetectInteractibles()
+    {
+        if (_currentInteractItem != null)
+        {
+            _currentInteractItem.SetActiveHighlight(false);
         }
         Vector2 direction = DetermineDirection(_isoRenderer.LastDirection);
         Debug.DrawRay(_hand.position, direction * _raycastLength, Color.red, .5f);
@@ -75,14 +107,39 @@ public class Player : MonoBehaviour
         //Debug.Log($"{hitResult.collider.gameObject.name}");
         if (hitResult.collider?.gameObject != null)
         {
-            _currentItem = hitResult.collider.gameObject.GetComponent<Interactable>();
-            _currentItem.SetActiveHighlight(true);
+            _currentInteractItem = hitResult.collider.gameObject.GetComponent<Interactable>();
+            _currentInteractItem.SetActiveHighlight(true);
         }
         else
         {
-            _currentItem = null;
+            _currentInteractItem = null;
         }
-        //TODO: enable and disable outline
+    }
+
+    private void RaycastInteract()
+    {
+        if (Input.GetKeyDown(_keyCodes[4]))
+        {
+            //interaction based items
+            if (_currentInteractItem != null)
+            {
+                _currentInteractItem.Interact(_hand);
+                Debug.Log($"Interacting with {_currentPickupItem.name}");
+            }
+
+            //pickup item actions
+            if (_currentPickupItem.onGround == true)
+            {
+                _currentPickupItem.Interact(_hand);
+                Debug.Log($"Picking up {_currentPickupItem.name}");
+                _currentPickupItem.onGround = false;
+            }
+            else
+            {
+                _currentPickupItem.onGround = true;
+                _currentPickupItem.StopInteraction();
+            }
+        }
     }
 
     private Vector2 DetermineDirection(int lastDirection)
@@ -126,13 +183,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Interact()
+    private void OverlapBoxInteract()
     {
         //Action (interact)
         if (Input.GetKeyDown(_keyCodes[4]))
         {
             //Do Action here
-            if (_curInteractable == null)
+            if (_curInteractable == null && _currentInteractItem != null)
             {
                 var overlappingObjects = Physics2D.OverlapBoxAll(transform.position + transform.TransformVector(_boxOffset), _boxSize / 2f, 0, _intaractableMask);
                 Debug.Log($"{overlappingObjects.Length}");
@@ -142,6 +199,7 @@ public class Player : MonoBehaviour
                 // Debug.Log($"{obj.transform.name}");
                 _curInteractable = obj.GetComponent<IInteractable>();
                 _curInteractable?.Interact(_hand);
+                _currentInteractItem.Interact(_hand);
             }
             else
             {

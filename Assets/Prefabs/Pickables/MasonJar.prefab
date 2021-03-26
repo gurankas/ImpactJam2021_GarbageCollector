@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4213687355890948862}
   - component: {fileID: 4213687355890948863}
   - component: {fileID: 4213687355890948835}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: MasonJar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9159787971407184928}
   - component: {fileID: 2567878095231049666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
