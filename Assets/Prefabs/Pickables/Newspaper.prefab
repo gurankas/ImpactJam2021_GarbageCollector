@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 4086791265759182679}
-  recycleable: 0
+  recycleable: 1
   Grounded: 1
   _lerpSpeed: 8
 --- !u!61 &7304836495844262016
