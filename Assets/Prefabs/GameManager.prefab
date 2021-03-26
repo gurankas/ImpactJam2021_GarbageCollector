@@ -81,7 +81,7 @@ MonoBehaviour:
     - {fileID: 2562817059804709116, guid: 5796a81c0ecf2b4449b268b00fa9ffed, type: 3}
     - {fileID: 8502874462039971931, guid: 1c4796cd4fcc5dc4a930bb4f1b99163f, type: 3}
     - {fileID: 6769279265302059285, guid: 8df824840ddf5c249946471204ca0ebb, type: 3}
-  gameTime: 300
+  gameTime: 60
   score: 0
   slidingBar: {fileID: 0}
   scoreText: {fileID: 0}

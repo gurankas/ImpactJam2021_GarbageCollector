@@ -435,22 +435,10 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4301464007854909865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559751522}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1350033ad6e5fa4c90fdfba49af2454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &559751525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559751522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9891b386ea776f946862b519e36e719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &613101451
@@ -13221,11 +13209,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713225379458720533, guid: ded5d80ac20416f48a8662a1219f06d2,
         type: 3}
-      propertyPath: gameTime
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6713225379458720533, guid: ded5d80ac20416f48a8662a1219f06d2,
-        type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1541620794}
@@ -13234,9 +13217,9 @@ PrefabInstance:
       propertyPath: slidingBar
       value: 
       objectReference: {fileID: 1032280379}
-    - target: {fileID: 6713225379458720533, guid: ded5d80ac20416f48a8662a1219f06d2,
+    - target: {fileID: 7422974686825334306, guid: ded5d80ac20416f48a8662a1219f06d2,
         type: 3}
-      propertyPath: levelNumber
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

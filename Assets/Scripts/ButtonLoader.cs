@@ -10,6 +10,8 @@ public class ButtonLoader : MonoBehaviour
     public Object levelSelectorScene;
     public GameObject levelInfoWindow;
 
+    public Animator introObject;
+
 
     public void loadLevelSelector()
     {
@@ -54,5 +56,11 @@ public class ButtonLoader : MonoBehaviour
     public void closeLevelWindow()
     {
         levelInfoWindow.SetActive(false);
+    }
+
+    public void skipIntro()
+    {
+        introObject.speed = 0f;
+        introObject.Play("Intro0", 0, 10f);
     }
 }
