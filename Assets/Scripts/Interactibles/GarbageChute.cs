@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class Counter : Interactable
+public class GarbageChute : Interactable
 {
+    [SerializeField]
+    private bool _biodegradable;
+
     public override void Awake()
     {
         base.Awake();

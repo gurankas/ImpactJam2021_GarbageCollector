@@ -1,11 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Pickable : MonoBehaviour, IInteractable
+public class Pickable : Interactable
 {
-    [SerializeField]
-    private GameObject _highlight;
-
     private float _distance;
 
     private Player _player;
@@ -19,13 +16,9 @@ public class Pickable : MonoBehaviour, IInteractable
     [SerializeField]
     private float _lerpSpeed = 8f;
 
-    private void Awake()
+    public override void Interact(Transform attachTransform)
     {
-        SetActiveHighlight(false);
-    }
-
-    public void Interact(Transform attachTransform)
-    {
+        base.Interact(attachTransform);
         _holder = attachTransform;
         _sr = GetComponent<SpriteRenderer>();
     }
@@ -37,18 +30,15 @@ public class Pickable : MonoBehaviour, IInteractable
         transform.position = Vector2.Lerp(transform.position, _holder.position, _lerpSpeed * Time.deltaTime);
     }
 
-    public void StopInteraction()
+    public override void StopInteraction()
     {
+        base.StopInteraction();
         _holder = null;
     }
 
-    public void ChangeSortingOrder(int sortingOrder)
+    public override void ChangeSortingOrder(int sortingOrder)
     {
+        base.ChangeSortingOrder(sortingOrder);
         _sr.sortingOrder = sortingOrder;
-    }
-
-    public void SetActiveHighlight(bool value)
-    {
-        _highlight.gameObject.SetActive(value);
     }
 }

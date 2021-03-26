@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private KeyCode[] _keyCodes = new KeyCode[5];
     private IsometricCharacterRenderer _isoRenderer;
-    private Pickable _currentItem;
+    private Interactable _currentItem;
 
     private void Awake()
     {
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         //Debug.Log($"{hitResult.collider.gameObject.name}");
         if (hitResult.collider?.gameObject != null)
         {
-            _currentItem = hitResult.collider.gameObject.GetComponent<Pickable>();
+            _currentItem = hitResult.collider.gameObject.GetComponent<Interactable>();
             _currentItem.SetActiveHighlight(true);
         }
         else

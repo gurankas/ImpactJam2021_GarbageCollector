@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Counter : Interactable
+public class Sink : Interactable
 {
     public override void Awake()
     {
