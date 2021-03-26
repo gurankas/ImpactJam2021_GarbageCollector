@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sink : Interactable
 {
@@ -10,6 +11,11 @@ public class Sink : Interactable
     public float timeToComplete;
 
     private float _timeRemaining;
+
+    public GameObject canvas;
+    public GameObject sliderPrefab;
+    private GameObject _currentSlider;
+    private Slider _currentSliderValue;
 
     public override void Awake()
     {
@@ -33,6 +39,10 @@ public class Sink : Interactable
                     pickable._canPickup = false;
 
                     _timeRemaining = timeToComplete;
+
+                    _currentSlider = Instantiate(sliderPrefab, canvas.transform);
+                    _currentSliderValue = _currentSlider.GetComponent<Slider>();
+                    _currentSliderValue.value = 1f;
                 }
                 else if (_timeRemaining <= 0)
                 {
@@ -60,8 +70,16 @@ public class Sink : Interactable
             if(_timeRemaining > 0)
             {
                 _timeRemaining -= Time.deltaTime;
-            } else
+                _currentSliderValue.value = _timeRemaining / timeToComplete;
+
+
+                _currentSlider.transform.position = Camera.main.WorldToScreenPoint(new Vector3(_itemPos.transform.position.x, _itemPos.transform.position.y, _itemPos.transform.position.z));
+                _currentSlider.transform.position = new Vector3(_currentSlider.transform.position.x - (_currentSlider.GetComponent<RectTransform>().rect.width / 3), _currentSlider.transform.position.y + 50, _currentSlider.transform.position.z);
+            }
+            else
             {
+                Destroy(_currentSlider);
+                _currentSliderValue = null;
                 ((Pickable)_currentItem)._canPickup = true;
             }
 

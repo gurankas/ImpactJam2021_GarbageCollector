@@ -13,7 +13,7 @@ public class LevelsManager : MonoBehaviour
 
     private void Awake()
     {
-        LevelInfo newLevel = new LevelInfo("Level 1", "Let's start with the basics! Remember how to dispose these materials, then press Play whenever you're ready.");
+        LevelInfo newLevel = new LevelInfo("Level 1", "Let's start with the basics! Remember how to dispose these materials, then press Play whenever you're ready.", 300);
         newLevel.addType(TrashManager.TRASHTYPE.MILK);
         newLevel.addType(TrashManager.TRASHTYPE.CEREAL);
         newLevel.addType(TrashManager.TRASHTYPE.MASON);
@@ -28,12 +28,12 @@ public class LevelsManager : MonoBehaviour
 
         allLevels.Add(newLevel);
 
-        newLevel = new LevelInfo("Level 2", "Interesting lore of second level");
+        newLevel = new LevelInfo("Level 2", "Interesting lore of second level", 300);
         newLevel.addType(TrashManager.TRASHTYPE.MILK);
 
         allLevels.Add(newLevel);
 
-        newLevel = new LevelInfo("Level 3", "Interesting lore of third level");
+        newLevel = new LevelInfo("Level 3", "Interesting lore of third level", 300);
         newLevel.addType(TrashManager.TRASHTYPE.BAG);
 
         allLevels.Add(newLevel);
