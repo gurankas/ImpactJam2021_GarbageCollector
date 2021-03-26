@@ -121,9 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 6210437614009087436}
-  recycleable: 1
+  extraSteps: 
+  trashType: 0
+  trashCategory: 0
   Grounded: 1
-  _lerpSpeed: 8
+  _lerpSpeed: 25
+  _canPickup: 1
 --- !u!61 &2726490723541382503
 BoxCollider2D:
   m_ObjectHideFlags: 0

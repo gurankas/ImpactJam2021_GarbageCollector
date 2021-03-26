@@ -208,7 +208,7 @@ MonoBehaviour:
   trashType: 3
   trashCategory: 0
   Grounded: 1
-  _lerpSpeed: 8
+  _lerpSpeed: 25
   _canPickup: 1
 --- !u!61 &8678989071984641441
 BoxCollider2D:

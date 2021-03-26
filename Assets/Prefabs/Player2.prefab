@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e531ea5f50de2e64fa08892b6054f613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: 1
+  playerId: 1
   _speed: 8
   _intaractableMask:
     serializedVersion: 2
@@ -283,7 +283,7 @@ MonoBehaviour:
     m_Bits: 256
   _hand: {fileID: 5574875855621273450}
   _renderer: {fileID: 1828822147058208337}
-  _raycastLength: 0.6
+  _raycastLength: 1
 --- !u!1 &4607208621767741429
 GameObject:
   m_ObjectHideFlags: 0

@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e531ea5f50de2e64fa08892b6054f613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: 0
+  playerId: 0
   _speed: 8
   _intaractableMask:
     serializedVersion: 2
@@ -313,4 +313,4 @@ MonoBehaviour:
     m_Bits: 256
   _hand: {fileID: 1963223367}
   _renderer: {fileID: 7377484508212287941}
-  _raycastLength: 0.6
+  _raycastLength: 1
