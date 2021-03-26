@@ -15,6 +15,7 @@ public class GarbageChute : Interactable
         if (otherObject != null)
         {
             var dumpItem = otherObject.GetComponent<Pickable>();
+            if (dumpItem.Grounded == true) return;
             if (dumpItem?.recycleable == _recycleable)
             {
                 Debug.Log("That is the correct bin");
