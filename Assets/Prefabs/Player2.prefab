@@ -275,8 +275,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: 1
   _speed: 8
-  _boxOffset: {x: 0, y: -0.6, z: 0}
-  _boxSize: {x: 0.8, y: 0.8, z: 0}
   _intaractableMask:
     serializedVersion: 2
     m_Bits: 128
@@ -285,7 +283,7 @@ MonoBehaviour:
     m_Bits: 256
   _hand: {fileID: 5574875855621273450}
   _renderer: {fileID: 1828822147058208337}
-  _raycastLength: 0.4
+  _raycastLength: 0.6
 --- !u!1 &4607208621767741429
 GameObject:
   m_ObjectHideFlags: 0
