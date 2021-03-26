@@ -114,20 +114,29 @@ public class PlayerController : MonoBehaviour
 
             if(_currentPickupItem != null)
             {
-
-                // Debug.Log($"item on the ground {_currentPickupItem.Grounded}");
-                //pickup item actions
-                if (_currentPickupItem.Grounded == true)
+                if (_currentPickupItem._canPickup)
                 {
-                    _currentPickupItem.Interact(_hand, null);
-                    // Debug.Log($"Picking up {_currentPickupItem.name}");
-                    _currentPickupItem.Grounded = false;
+
+                    // Debug.Log($"item on the ground {_currentPickupItem.Grounded}");
+                    //pickup item actions
+                    if (_currentPickupItem.Grounded == true)
+                    {
+                        _currentPickupItem.Interact(_hand, null);
+                        // Debug.Log($"Picking up {_currentPickupItem.name}");
+                        _currentPickupItem.Grounded = false;
+                    }
+                    else
+                    {
+                        _currentPickupItem.Grounded = true;
+                        _currentPickupItem.StopInteraction();
+                    }
                 }
                 else
                 {
                     _currentPickupItem.Grounded = true;
                     _currentPickupItem.StopInteraction();
                 }
+
             }
         }
     }
@@ -212,6 +221,7 @@ public class PlayerController : MonoBehaviour
         Vector2 newPos = currentPos + movement * Time.deltaTime;
         
         _rigidbody.MovePosition(newPos);
+        _isoRenderer.SetDirection(movement);
 
 
         _animator.SetFloat("moveX", inputVector.x);

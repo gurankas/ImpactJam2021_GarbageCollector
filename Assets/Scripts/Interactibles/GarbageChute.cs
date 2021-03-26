@@ -17,20 +17,27 @@ public class GarbageChute : Interactable
     {
         if (otherObject != null)
         {
-            var dumpItem = otherObject.GetComponent<Pickable>();
-            if (dumpItem.Grounded == true) return;
+            if(otherObject is Pickable)
+            {
 
-            if (dumpItem.trashCategory.Equals(_category))
-            {
-                Debug.Log("That is the correct bin");
-                gameManager.score +=  TrashManager.getDetails(dumpItem.trashType).pointsPositive;
+                var dumpItem = (Pickable)otherObject;
+                if(dumpItem.extraSteps.Count == 0)
+                {
+                    if (dumpItem.Grounded == true) return;
+
+                    if (dumpItem.trashCategory.Equals(_category))
+                    {
+                        Debug.Log("That is the correct bin");
+                        gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsPositive;
+                    }
+                    else
+                    {
+                        gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsNegative;
+                        Debug.Log("Wrong bin");
+                    }
+                    dumpItem.SelfDestruct();
+                }
             }
-            else
-            {
-                gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsNegative;
-                Debug.Log("Wrong bin");
-            }
-            dumpItem.SelfDestruct();
         }
     }
 

@@ -1,8 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Pickable : Interactable
 {
+    public List<EXTRASTEPS> extraSteps = new List<EXTRASTEPS>();
+
     private float _distance;
 
     private PlayerController _player;
@@ -24,6 +27,9 @@ public class Pickable : Interactable
     [SerializeField]
     private float _lerpSpeed = 8f;
 
+    [HideInInspector]
+    public bool _canPickup = true;
+
 
     private void Start()
     {
@@ -33,9 +39,13 @@ public class Pickable : Interactable
 
     public override void Interact(Transform attachTransform, Interactable otherObject)
     {
-        base.Interact(attachTransform, otherObject);
-        _holder = attachTransform;
-        _sr = GetComponent<SpriteRenderer>();
+        if (_canPickup)
+        {
+
+            base.Interact(attachTransform, otherObject);
+            _holder = attachTransform;
+            _sr = GetComponent<SpriteRenderer>();
+        }
     }
 
     private void Update()
@@ -61,5 +71,12 @@ public class Pickable : Interactable
     public void SelfDestruct()
     {
         Destroy(gameObject);
+    }
+
+
+
+    public enum EXTRASTEPS
+    {
+        SINK
     }
 }
