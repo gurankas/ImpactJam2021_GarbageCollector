@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
                     // Debug.Log($"item on the ground {_currentPickupItem.Grounded}");
                     //pickup item actions
-                    if (_currentPickupItem.Grounded == true && _isHandEmpty)
+                    if (_currentPickupItem.Grounded == true)
                     {
                         _currentPickupItem.Interact(_hand, null, gameObject);
                         // Debug.Log($"Picking up {_currentPickupItem.name}");
