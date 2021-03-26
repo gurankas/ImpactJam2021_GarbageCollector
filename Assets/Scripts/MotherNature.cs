@@ -24,6 +24,10 @@ public class MotherNature : MonoBehaviour
         {"Thank you so much!", Mood.HAPPY}
     };
 
+    void Awake()
+    {
+        anim = this.GetComponent<Animator>();
+    }
     // possible responses if player puts a TRASH item in the RECYCLE
     private Dictionary<string, Mood> recycle_negative_feedback = new Dictionary<string, Mood>()
     {
