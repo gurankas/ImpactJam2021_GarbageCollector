@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Sink : Interactable
 {
     [SerializeField]
     private Transform _itemPos;
+
+    [SerializeField]
+    private AudioClip _sinkSFX;
 
     private Pickable _currentItem;
 
     public float timeToComplete;
 
     private float _timeRemaining;
+    private AudioSource _as;
 
     public GameObject canvas;
     public GameObject sliderPrefab;
@@ -20,22 +25,23 @@ public class Sink : Interactable
     public override void Awake()
     {
         base.Awake();
+        _as = GetComponent<AudioSource>();
     }
 
     public override void Interact(Transform other, Interactable otherObject)
     {
-        if(otherObject is Pickable)
+        if (otherObject is Pickable)
         {
             Pickable pickable = (Pickable)otherObject;
             if (pickable.extraSteps.Contains(Pickable.EXTRASTEPS.SINK))
             {
                 if (_currentItem == null)
                 {
-                    //TODO integration of progress bar here
                     _currentItem = otherObject.GetComponent<Pickable>();
                     otherObject.transform.parent = _itemPos;
                     otherObject.transform.localPosition = Vector3.zero;
-                    Debug.Log("Started washing");
+                    // Debug.Log("Started washing");
+                    _as.PlayOneShot(_sinkSFX);
                     pickable._canPickup = false;
 
                     _timeRemaining = timeToComplete;
@@ -65,9 +71,9 @@ public class Sink : Interactable
 
     private void Update()
     {
-        if(_currentItem != null)
+        if (_currentItem != null)
         {
-            if(_timeRemaining > 0)
+            if (_timeRemaining > 0)
             {
                 _timeRemaining -= Time.deltaTime;
                 _currentSliderValue.value = _timeRemaining / timeToComplete;

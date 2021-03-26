@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class GarbageChute : Interactable
 {
     public MotherNature motherNature;
@@ -19,7 +20,7 @@ public class GarbageChute : Interactable
     public override void Awake()
     {
         base.Awake();
-        _as.GetComponent<AudioSource>();
+        _as = GetComponent<AudioSource>();
     }
 
     public override void Interact(Transform other, Interactable otherObject)

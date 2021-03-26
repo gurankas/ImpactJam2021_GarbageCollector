@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 6781299524329675258}
-  extraSteps: 
+  extraSteps: 00000000
   trashType: 1
   trashCategory: 0
   Grounded: 1
