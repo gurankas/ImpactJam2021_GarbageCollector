@@ -24,10 +24,7 @@ public class MotherNature : MonoBehaviour
         {"Thank you so much!", Mood.HAPPY}
     };
 
-    void Awake()
-    {
-        anim = this.GetComponent<Animator>();
-    }
+
     // possible responses if player puts a TRASH item in the RECYCLE
     private Dictionary<string, Mood> recycle_negative_feedback = new Dictionary<string, Mood>()
     {
@@ -54,27 +51,28 @@ public class MotherNature : MonoBehaviour
     };
 
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        anim = this.GetComponent<Animator>();
         happy = Resources.Load<Sprite>("MotherNature/mothernature_happy");
         worried = Resources.Load<Sprite>("MotherNature/mothernature_worried");
         angry = Resources.Load<Sprite>("MotherNature/mothernature_angry");
         normal = Resources.Load<Sprite>("MotherNature/mothernature_normal");
-
-        // GivePositiveFeedback();
-        // GiveRecycleNegativeFeedback();
     }
-
 
     void OnEnable()
     {
-        anim = this.GetComponent<Animator>();
         anim.Play("FadeIn");
+        StartCoroutine(DisableOnEndAnimation());
     }
 
+
+    IEnumerator DisableOnEndAnimation()
+    {
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+        yield return new WaitForSeconds(clips[0].length);
+        gameObject.SetActive(false);
+    }
 
 
     // Update is called once per frame

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GarbageChute : Interactable
 {
+    public MotherNature motherNature;
+
     [SerializeField]
     private TrashManager.TRASHCATS _category;
 
@@ -25,15 +27,26 @@ public class GarbageChute : Interactable
                 {
                     if (dumpItem.Grounded == true) return;
 
+                    motherNature.gameObject.SetActive(true);
                     if (dumpItem.trashCategory.Equals(_category))
                     {
                         Debug.Log("That is the correct bin");
                         gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsPositive;
+                        motherNature.GivePositiveFeedback();
                     }
-                    else
+                    else 
                     {
                         gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsNegative;
                         Debug.Log("Wrong bin");
+
+                        if (dumpItem.trashCategory.Equals(TrashManager.TRASHCATS.RECYCLABLE))
+                        {
+                            motherNature.GiveNegativeFeedbackOnTrash();
+                        }
+                        else
+                        {
+                            motherNature.GiveNegativeFeedbackOnRecycle();
+                        }
                     }
                     dumpItem.SelfDestruct();
                 }
