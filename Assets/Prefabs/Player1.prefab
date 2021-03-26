@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1963223366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963223367}
+  m_Layer: 6
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963223367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963223366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.317, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7377484509032630539}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7377484508212287941
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +42,7 @@ GameObject:
   - component: {fileID: 7377484508212287937}
   - component: {fileID: 7377484508212287938}
   - component: {fileID: 7377484508212287939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7377484508727226070}
   - component: {fileID: 7377484508727226069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7377484508947881500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +235,7 @@ GameObject:
   - component: {fileID: 7377484509032630541}
   - component: {fileID: 5204524882459484503}
   - component: {fileID: 7728021921948354036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,6 +255,7 @@ Transform:
   m_Children:
   - {fileID: 7377484508727226070}
   - {fileID: 7377484508947881500}
+  - {fileID: 1963223367}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -241,7 +272,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -273,12 +304,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: 0
-  _speed: 3
-  _boxOffset: {x: 0, y: 0, z: 0}
-  _boxSize: {x: 0, y: 0, z: 0}
+  _speed: 8
   _intaractableMask:
     serializedVersion: 2
-    m_Bits: 0
-  _hand: {fileID: 0}
+    m_Bits: 128
+  _pickupMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _hand: {fileID: 1963223367}
   _renderer: {fileID: 7377484508212287941}
-  _movementVector: {x: 0, y: 0}
+  _raycastLength: 0.6

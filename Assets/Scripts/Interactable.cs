@@ -2,18 +2,30 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour, IInteractable
 {
-    public void ChangeSortingOrder(int sortingOrder)
+    [SerializeField]
+    private GameObject _highlight;
+
+    virtual public void Awake()
+    {
+        SetActiveHighlight(false);
+    }
+
+    virtual public void ChangeSortingOrder(int sortingOrder)
     {
 
     }
 
-    public void Interact(Transform other)
+    virtual public void Interact(Transform other, Interactable otherObject)
     {
-        Debug.Log($"You're interacting with {other.name}");
     }
 
-    public void StopInteraction()
+    virtual public void StopInteraction()
     {
 
+    }
+
+    public void SetActiveHighlight(bool value)
+    {
+        _highlight.gameObject.SetActive(value);
     }
 }
