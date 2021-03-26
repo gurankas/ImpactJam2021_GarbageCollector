@@ -65,23 +65,22 @@ public class Player : MonoBehaviour
         Movement();
         //Interact();
 
+        if (_currentItem != null)
+        {
+            _currentItem.SetActiveHighlight(false);
+        }
         Vector2 direction = DetermineDirection(_isoRenderer.LastDirection);
         Debug.DrawRay(_hand.position, direction * _raycastLength, Color.red, .5f);
         var hitResult = Physics2D.Raycast(_hand.position, direction, _raycastLength, _intaractableMask);
-        Debug.Log($"{hitResult.collider.gameObject.name}");
-        if (hitResult.collider.gameObject != null)
+        //Debug.Log($"{hitResult.collider.gameObject.name}");
+        if (hitResult.collider?.gameObject != null)
         {
             _currentItem = hitResult.collider.gameObject.GetComponent<Pickable>();
-            _currentItem.DisableOutlineWhenFar(_raycastLength, this);
+            _currentItem.SetActiveHighlight(true);
         }
         else
         {
             _currentItem = null;
-        }
-        var nearbyPickableOutline = hitResult.collider.gameObject.GetComponent<Outline>();
-        if (nearbyPickableOutline != null)
-        {
-            nearbyPickableOutline.enabled = true;
         }
         //TODO: enable and disable outline
     }

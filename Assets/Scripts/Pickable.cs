@@ -3,7 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Pickable : MonoBehaviour, IInteractable
 {
-    public Outline outline;
+    [SerializeField]
+    private GameObject _highlight;
 
     private float _distance;
 
@@ -15,15 +16,12 @@ public class Pickable : MonoBehaviour, IInteractable
 
     private SpriteRenderer _sr;
 
-
     [SerializeField]
     private float _lerpSpeed = 8f;
 
     private void Awake()
     {
-        outline = GetComponent<Outline>();
-        outline.OutlineWidth = 10;
-        outline.enabled = false;
+        SetActiveHighlight(false);
     }
 
     public void Interact(Transform attachTransform)
@@ -39,14 +37,6 @@ public class Pickable : MonoBehaviour, IInteractable
         transform.position = Vector2.Lerp(transform.position, _holder.position, _lerpSpeed * Time.deltaTime);
     }
 
-    private void FixedUpdate()
-    {
-        if (_player != null && _distance > 0.0f)
-        {
-            DisableOutlineWhenFar(_distance, _player);
-        }
-    }
-
     public void StopInteraction()
     {
         _holder = null;
@@ -57,18 +47,8 @@ public class Pickable : MonoBehaviour, IInteractable
         _sr.sortingOrder = sortingOrder;
     }
 
-    public void DisableOutlineWhenFar(float distance, Player player)
+    public void SetActiveHighlight(bool value)
     {
-        if (outline.enabled == true)
-        {
-            _player = player;
-            _distance = distance;
-            Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
-            Vector2 currentPlayerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            if (Vector2.Distance(currentPos, currentPlayerPos) > distance)
-            {
-                outline.enabled = false;
-            }
-        }
+        _highlight.gameObject.SetActive(value);
     }
 }
