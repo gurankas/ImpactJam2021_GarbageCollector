@@ -5,7 +5,7 @@ public class Pickable : Interactable
 {
     private float _distance;
 
-    private Player _player;
+    private PlayerController _player;
 
     private Rigidbody2D _rigidBody;
 
