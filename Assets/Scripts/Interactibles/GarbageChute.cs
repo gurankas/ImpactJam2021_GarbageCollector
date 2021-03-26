@@ -3,7 +3,7 @@ using UnityEngine;
 public class GarbageChute : Interactable
 {
     [SerializeField]
-    private bool _recycleable = false;
+    private TrashManager.TRASHCATS _category;
 
     public override void Awake()
     {
@@ -16,7 +16,8 @@ public class GarbageChute : Interactable
         {
             var dumpItem = otherObject.GetComponent<Pickable>();
             if (dumpItem.Grounded == true) return;
-            if (dumpItem?.recycleable == _recycleable)
+
+            if (dumpItem.trashCategory.Equals(_category))
             {
                 Debug.Log("That is the correct bin");
             }

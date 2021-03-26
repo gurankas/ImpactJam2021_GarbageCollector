@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector3 _boxOffset;
     private Vector3 _boxSize;
-    private KeyCode[] _keyCodes = new KeyCode[5];
     private IsometricCharacterRenderer _isoRenderer;
     private Interactable _currentInteractItem;
     private Pickable _currentPickupItem;
@@ -113,18 +112,22 @@ public class PlayerController : MonoBehaviour
                 // Debug.Log($"Interacting with {_currentPickupItem.name}");
             }
 
-            // Debug.Log($"item on the ground {_currentPickupItem.Grounded}");
-            //pickup item actions
-            if (_currentPickupItem.Grounded == true)
+            if(_currentPickupItem != null)
             {
-                _currentPickupItem.Interact(_hand, null);
-                // Debug.Log($"Picking up {_currentPickupItem.name}");
-                _currentPickupItem.Grounded = false;
-            }
-            else
-            {
-                _currentPickupItem.Grounded = true;
-                _currentPickupItem.StopInteraction();
+
+                // Debug.Log($"item on the ground {_currentPickupItem.Grounded}");
+                //pickup item actions
+                if (_currentPickupItem.Grounded == true)
+                {
+                    _currentPickupItem.Interact(_hand, null);
+                    // Debug.Log($"Picking up {_currentPickupItem.name}");
+                    _currentPickupItem.Grounded = false;
+                }
+                else
+                {
+                    _currentPickupItem.Grounded = true;
+                    _currentPickupItem.StopInteraction();
+                }
             }
         }
     }
@@ -173,7 +176,7 @@ public class PlayerController : MonoBehaviour
     private void OverlapBoxInteract()
     {
         //Action (interact)
-        if (Input.GetKeyDown(_keyCodes[4]))
+        if (player.GetButtonDown("Interact"))
         {
             //Do Action here
             if (_curInteractable == null && _currentInteractItem != null)

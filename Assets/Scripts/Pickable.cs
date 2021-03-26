@@ -13,14 +13,23 @@ public class Pickable : Interactable
 
     private SpriteRenderer _sr;
 
-    [SerializeField]
-    public bool recycleable = false;
+
+    public TrashManager.TRASHTYPE trashType;
+    [HideInInspector]
+    public TrashManager.TRASHCATS trashCategory;
 
     [HideInInspector]
     public bool Grounded = true;
 
     [SerializeField]
     private float _lerpSpeed = 8f;
+
+
+    private void Start()
+    {
+        trashCategory = TrashManager.getCategory(trashType);
+    }
+
 
     public override void Interact(Transform attachTransform, Interactable otherObject)
     {
