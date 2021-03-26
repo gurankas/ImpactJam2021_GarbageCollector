@@ -180,7 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 1833665923437628868}
+  motherNature: {fileID: 0}
   _category: 1
+  _gameManager: {fileID: 0}
+  _wrongSFX: {fileID: 8300000, guid: 37cecc6e415df95428b4624bb0e505fa, type: 3}
+  _correctSFX: {fileID: 8300000, guid: ed6215e4071cd5042afd68a1ddc57c8d, type: 3}
 --- !u!61 &4655173464693908829
 BoxCollider2D:
   m_ObjectHideFlags: 0
