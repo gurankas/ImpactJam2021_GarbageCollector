@@ -7,6 +7,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<TrashManager.TRASHTYPE, GameObject> trashtypePrefab = new RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<TrashManager.TRASHTYPE, GameObject>();
+
+
     [HideInInspector]
     public float gameTime;
     private float _remainingTime;

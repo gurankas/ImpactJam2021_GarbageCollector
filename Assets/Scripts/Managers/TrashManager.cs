@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TrashManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class TrashManager : MonoBehaviour
             icon = Resources.Load<Sprite>("Icons/icon_" + _trashtype);
         }
     }
+
 
     private static void populateList()
     {
@@ -74,6 +76,7 @@ public class TrashManager : MonoBehaviour
         return details.category;
     }
 
+    [Serializable]
     public enum TRASHTYPE
     {
         MILK,
@@ -92,4 +95,6 @@ public class TrashManager : MonoBehaviour
         RECYCLABLE,
         TRASH
     }
+
+
 }

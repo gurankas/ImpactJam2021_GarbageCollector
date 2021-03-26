@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private Interactable _currentInteractItem;
     private Pickable _currentPickupItem;
 
+
     private void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
             //interaction based items
             if (_currentInteractItem != null)
             {
-                _currentInteractItem.Interact(_hand, _currentPickupItem);
+                _currentInteractItem.Interact(_hand, _currentPickupItem, gameObject);
                 // Debug.Log($"Interacting with {_currentPickupItem.name}");
             }
 
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
                     //pickup item actions
                     if (_currentPickupItem.Grounded == true)
                     {
-                        _currentPickupItem.Interact(_hand, null);
+                        _currentPickupItem.Interact(_hand, null, gameObject);
                         // Debug.Log($"Picking up {_currentPickupItem.name}");
                         _currentPickupItem.Grounded = false;
                     }
@@ -129,16 +130,23 @@ public class PlayerController : MonoBehaviour
                     {
                         _currentPickupItem.Grounded = true;
                         _currentPickupItem.StopInteraction();
+
                     }
                 }
                 else
                 {
                     _currentPickupItem.Grounded = true;
                     _currentPickupItem.StopInteraction();
+
                 }
 
             }
         }
+    }
+
+    public void PickupItem(GameObject newItem)
+    {
+        _currentPickupItem = newItem.GetComponent<Pickable>();
     }
 
     private Vector2 DetermineDirection(int lastDirection)
@@ -197,8 +205,8 @@ public class PlayerController : MonoBehaviour
                 var obj = overlappingObjects[0];
                 // Debug.Log($"{obj.transform.name}");
                 _curInteractable = obj.GetComponent<IInteractable>();
-                _curInteractable?.Interact(_hand, null);
-                _currentInteractItem.Interact(_hand, null);
+                _curInteractable?.Interact(_hand, null, gameObject);
+                _currentInteractItem.Interact(_hand, null, gameObject);
             }
             else
             {

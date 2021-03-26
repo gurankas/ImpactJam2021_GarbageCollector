@@ -6,12 +6,12 @@ public class LevelInfo
 {
     public string title;
     public string description;
-    public int gameTime;
+    public float gameTime;
 
     public List<TrashManager.TRASHTYPE> trashItems = new List<TrashManager.TRASHTYPE>();
 
 
-    public LevelInfo(string _title, string _desc, int _gameTime)
+    public LevelInfo(string _title, string _desc, float _gameTime)
     {
         title = _title;
         description = _desc;

@@ -14,8 +14,8 @@ public class Interactable : MonoBehaviour, IInteractable
     {
 
     }
-
-    virtual public void Interact(Transform other, Interactable otherObject)
+    
+    virtual public void Interact(Transform other, Interactable otherObject, GameObject origin)
     {
     }
 

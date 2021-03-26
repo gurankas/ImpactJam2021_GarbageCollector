@@ -37,12 +37,12 @@ public class Pickable : Interactable
     }
 
 
-    public override void Interact(Transform attachTransform, Interactable otherObject)
+    public override void Interact(Transform attachTransform, Interactable otherObject, GameObject origin)
     {
         if (_canPickup)
         {
 
-            base.Interact(attachTransform, otherObject);
+            base.Interact(attachTransform, otherObject, null);
             _holder = attachTransform;
             _sr = GetComponent<SpriteRenderer>();
         }
