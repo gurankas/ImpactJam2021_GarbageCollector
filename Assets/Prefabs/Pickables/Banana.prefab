@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 8e687cd5814f49f4bb568ee897e6d554,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 2359539016582344092}
+  recycleable: 0
+  Grounded: 1
   _lerpSpeed: 8
 --- !u!61 &7569358790324553015
 BoxCollider2D:

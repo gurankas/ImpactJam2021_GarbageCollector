@@ -38,6 +38,7 @@ public class Pickable : Interactable
 
     public override void StopInteraction()
     {
+        Debug.Log("Dropped");
         base.StopInteraction();
         _holder = null;
     }
