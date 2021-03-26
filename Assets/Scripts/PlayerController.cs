@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 // Debug.Log($"Interacting with {_currentPickupItem.name}");
             }
 
-            if(_currentPickupItem != null)
+            if (_currentPickupItem != null)
             {
                 if (_currentPickupItem._canPickup)
                 {
@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
         Vector2 movement = inputVector * _speed;
         Vector2 newPos = currentPos + movement * Time.deltaTime;
-        
+
         _rigidbody.MovePosition(newPos);
         _isoRenderer.SetDirection(movement);
 
