@@ -7,7 +7,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameTime = 300f;
+    [HideInInspector]
+    public float gameTime;
     private float _remainingTime;
     private float _slideValue;
 
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         if(levelNumber == 0)
         populateReceipeList();
 
+        gameTime = LevelsManager.getLevelDetails(levelNumber).gameTime;
         _remainingTime = gameTime;
     }
 
