@@ -15,7 +15,7 @@ public class GarbageChute : Interactable
         base.Awake();
     }
 
-    public override void Interact(Transform other, Interactable otherObject)
+    public override void Interact(Transform other, Interactable otherObject, GameObject origin)
     {
         if (otherObject != null)
         {
