@@ -55,19 +55,19 @@ public class MotherNature : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = this.GetComponent<Animator>();
         happy = Resources.Load<Sprite>("MotherNature/mothernature_happy");
         worried = Resources.Load<Sprite>("MotherNature/mothernature_worried");
         angry = Resources.Load<Sprite>("MotherNature/mothernature_angry");
         normal = Resources.Load<Sprite>("MotherNature/mothernature_normal");
 
-       // GivePositiveFeedback();
-       // GiveRecycleNegativeFeedback();
+        // GivePositiveFeedback();
+        // GiveRecycleNegativeFeedback();
     }
 
 
     void OnEnable()
     {
+        anim = this.GetComponent<Animator>();
         anim.Play("FadeIn");
     }
 
