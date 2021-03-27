@@ -47,7 +47,9 @@ public class Sink : Interactable
                     _timeRemaining = timeToComplete;
 
                     _currentSlider = Instantiate(sliderPrefab);
-                    _currentSliderValue = _currentSlider.transform.GetChild(0).gameObject.GetComponent<Slider>();
+
+                    _currentSliderValue = _currentSlider.transform.GetChild(0).GetComponent<Slider>();
+
                     _currentSliderValue.value = 1f;
                 }
                 else if (_timeRemaining <= 0)

@@ -20,9 +20,12 @@ public class GarbagePile : Interactable
         if (origin.GetComponent<PlayerController>()._currentPickupItem == null)
         {
 
-            int randomIndex = Random.Range(0, _levelInfo.trashItems.Count);
+            int randomTypeIndex = Random.Range(0, _levelInfo.trashItems.Count);
+            int randomExtraIndex = Random.Range(-1, System.Enum.GetValues(typeof(Pickable.EXTRASTEPS)).Length);
+            
 
-            TrashManager.TRASHTYPE newTrash = _levelInfo.trashItems[randomIndex];
+
+            TrashManager.TRASHTYPE newTrash = _levelInfo.trashItems[randomTypeIndex];
 
             GameObject newPrefab = null;
             gameManager.trashtypePrefab.TryGetValue(newTrash, out newPrefab);
@@ -36,6 +39,10 @@ public class GarbagePile : Interactable
                 newItem.GetComponent<Pickable>().Interact(origin.GetComponent<PlayerController>()._hand, null, gameObject);
                 newItem.GetComponent<Pickable>().Grounded = false;
 
+                if (randomExtraIndex >= 0)
+                {
+                    newItem.GetComponent<Pickable>().extraSteps.Add((Pickable.EXTRASTEPS)randomExtraIndex);
+                }
             }
         }
     }

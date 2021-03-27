@@ -50,6 +50,14 @@ public class MotherNature : MonoBehaviour
         { "How wasteful.", Mood.WORRIED},
     };
 
+    private Dictionary<string, Mood> incorrect_disposal_feedback = new Dictionary<string, Mood>()
+    {
+        {"Are you sure that item is ready to be disposed off?", Mood.WORRIED},
+        {"It's not ready yet!", Mood.WORRIED},
+        {"You can't do that.", Mood.ANGRY},
+        {"Think about how it needs to be handled before disposing off!", Mood.ANGRY},
+        {"Try again next time.", Mood.WORRIED},
+    };
 
     void Awake()
     {
@@ -106,6 +114,13 @@ public class MotherNature : MonoBehaviour
         int index = Random.Range(0, trash_negative_feedback.Count - 1);
         text.text = trash_negative_feedback.ElementAt(index).Key;
         UpdateAppearance(false, trash_negative_feedback.ElementAt(index).Value);
+    }
+    public void GiveIncorrectDisposalFeedback()
+    {
+        // select random feedback message
+        int index = Random.Range(0, incorrect_disposal_feedback.Count - 1);
+        text.text = incorrect_disposal_feedback.ElementAt(index).Key;
+        UpdateAppearance(false, incorrect_disposal_feedback.ElementAt(index).Value);
     }
 
     public void UpdateAppearance(bool isPositive, Mood mood)
