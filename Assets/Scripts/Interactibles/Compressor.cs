@@ -8,7 +8,7 @@ public class Compressor : Interactable
     private Transform _itemPos;
 
     [SerializeField]
-    private AudioClip _sinkSFX;
+    private AudioClip _crushSFX;
 
     private Pickable _currentItem;
 
@@ -22,8 +22,8 @@ public class Compressor : Interactable
 
     public override void Awake()
     {
-        _timeRemaining = timeToComplete;
         base.Awake();
+        _timeRemaining = timeToComplete;
         _as = GetComponent<AudioSource>();
     }
 
@@ -40,7 +40,7 @@ public class Compressor : Interactable
                     otherObject.transform.parent = _itemPos;
                     otherObject.transform.localPosition = Vector3.zero;
                     // Debug.Log("Started washing");
-                    _as.PlayOneShot(_sinkSFX);
+                    _as.PlayOneShot(_crushSFX);
                     pickable._canPickup = false;
 
                     _timeRemaining = timeToComplete;
@@ -65,8 +65,9 @@ public class Compressor : Interactable
             }
             else
             {
-                ((Pickable)_currentItem)._canPickup = true;
-                ((Pickable)_currentItem).extraSteps.Remove(Pickable.EXTRASTEPS.COMPRESSOR);
+                _currentItem._canPickup = true;
+                _currentItem.extraSteps.Remove(Pickable.EXTRASTEPS.COMPRESSOR);
+                _currentItem.GetComponent<SpriteRenderer>().sprite = _currentItem.crushedSprite;
             }
 
         }

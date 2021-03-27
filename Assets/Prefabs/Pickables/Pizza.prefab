@@ -204,7 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 6643038208140012}
-  extraSteps: 
+  extraSteps: 01000000
+  crushedSprite: {fileID: 21300000, guid: 15a5d9677f1d6914fbd6ffdb3ba309b2, type: 3}
   trashType: 5
   trashCategory: 0
   Grounded: 1
