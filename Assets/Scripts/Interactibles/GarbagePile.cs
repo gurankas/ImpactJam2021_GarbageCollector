@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GarbagePile : Interactable
 {
+    public bool createCompressible;
+    public bool createStinky;
 
     private LevelInfo _levelInfo;
     private GameManager gameManager;
@@ -42,23 +44,30 @@ public class GarbagePile : Interactable
                 newItem.GetComponent<Pickable>().Grounded = false;
 
                 TrashManager.TRASHTYPE newTrashType = newItem.GetComponent<Pickable>().trashType;
-                if (newTrashType.Equals(TrashManager.TRASHTYPE.CEREAL)
-                    || newTrashType.Equals(TrashManager.TRASHTYPE.MILK)
-                    || newTrashType.Equals(TrashManager.TRASHTYPE.PIZZA)
-                    || newTrashType.Equals(TrashManager.TRASHTYPE.SODA))
+
+                if (createCompressible)
                 {
-                    newItem.GetComponent<Pickable>().extraSteps.Add(Pickable.EXTRASTEPS.COMPRESSOR);
+                    if (newTrashType.Equals(TrashManager.TRASHTYPE.CEREAL)
+                        || newTrashType.Equals(TrashManager.TRASHTYPE.MILK)
+                        || newTrashType.Equals(TrashManager.TRASHTYPE.PIZZA)
+                        || newTrashType.Equals(TrashManager.TRASHTYPE.SODA))
+                    {
+                        newItem.GetComponent<Pickable>().extraSteps.Add(Pickable.EXTRASTEPS.COMPRESSOR);
+                    }
                 }
 
-                if (randomExtraIndex >= 0)
+                if (createStinky)
                 {
-                    if (!((Pickable.EXTRASTEPS)randomExtraIndex).Equals(Pickable.EXTRASTEPS.COMPRESSOR))
+                    if (randomExtraIndex >= 0)
                     {
-                        newItem.GetComponent<Pickable>().extraSteps.Add((Pickable.EXTRASTEPS)randomExtraIndex);
-                        if (newItem.GetComponent<Pickable>().extraSteps.Contains(Pickable.EXTRASTEPS.SINK))
+                        if (!((Pickable.EXTRASTEPS)randomExtraIndex).Equals(Pickable.EXTRASTEPS.COMPRESSOR))
                         {
-                            GameObject newStink = Instantiate(stinkyParticles, newItem.transform);
-                            newStink.transform.localPosition = Vector3.zero;
+                            newItem.GetComponent<Pickable>().extraSteps.Add((Pickable.EXTRASTEPS)randomExtraIndex);
+                            if (newItem.GetComponent<Pickable>().extraSteps.Contains(Pickable.EXTRASTEPS.SINK))
+                            {
+                                GameObject newStink = Instantiate(stinkyParticles, newItem.transform);
+                                newStink.transform.localPosition = Vector3.zero;
+                            }
                         }
                     }
                 }

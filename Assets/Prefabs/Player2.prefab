@@ -260,7 +260,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
-  m_SortingOrder: 10
+  m_SortingOrder: 2
 --- !u!114 &1458090825716896352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
     m_Bits: 256
   _hand: {fileID: 5574875855621273450}
   _renderer: {fileID: 1828822147058208337}
-  _raycastLength: 1
+  _raycastLength: 1.3
   _currentPickupItem: {fileID: 0}
 --- !u!1 &4607208621767741429
 GameObject:
