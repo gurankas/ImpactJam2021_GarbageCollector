@@ -8,6 +8,8 @@ public class GarbagePile : Interactable
     private LevelInfo _levelInfo;
     private GameManager gameManager;
 
+    public GameObject stinkyParticles;
+
 
     private void Start()
     {
@@ -42,7 +44,13 @@ public class GarbagePile : Interactable
                 if (randomExtraIndex >= 0)
                 {
                     newItem.GetComponent<Pickable>().extraSteps.Add((Pickable.EXTRASTEPS)randomExtraIndex);
+                    if (newItem.GetComponent<Pickable>().extraSteps.Contains(Pickable.EXTRASTEPS.SINK))
+                    {
+                        GameObject newStink = Instantiate(stinkyParticles, newItem.transform);
+                        newStink.transform.localPosition = Vector3.zero;
+                    }
                 }
+
             }
         }
     }
