@@ -134,7 +134,7 @@ MonoBehaviour:
   _sinkSFX: {fileID: 8300000, guid: ea69c9e1c95b770418aaa24726edc8e3, type: 3}
   timeToComplete: 8
   canvas: {fileID: 0}
-  sliderPrefab: {fileID: 6489349403020522359, guid: 9ef85eefd1c574dc890957a70da469e5,
+  sliderPrefab: {fileID: 6355738168037645706, guid: bdf2c0642685c46359f30f3b3325b90a,
     type: 3}
 --- !u!61 &1807830321799343121
 BoxCollider2D:

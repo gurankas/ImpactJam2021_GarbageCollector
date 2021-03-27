@@ -46,7 +46,7 @@ public class Sink : Interactable
 
                     _timeRemaining = timeToComplete;
 
-                    _currentSlider = Instantiate(sliderPrefab, canvas.transform);
+                    _currentSlider = Instantiate(sliderPrefab);
                     _currentSliderValue = _currentSlider.GetComponent<Slider>();
                     _currentSliderValue.value = 1f;
                 }
