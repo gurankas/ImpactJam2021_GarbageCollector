@@ -67,6 +67,7 @@ public class Sink : Interactable
             {
                 ((Pickable)_currentItem)._canPickup = true;
                 ((Pickable)_currentItem).extraSteps.Remove(Pickable.EXTRASTEPS.SINK);
+                _currentItem = null;
             }
 
         }
