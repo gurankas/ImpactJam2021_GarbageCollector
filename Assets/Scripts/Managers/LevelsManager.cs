@@ -14,27 +14,47 @@ public class LevelsManager : MonoBehaviour
     private void Awake()
     {
         LevelInfo newLevel = new LevelInfo("Level 1", "Let's start with the basics! Remember how to dispose these materials, then press Play whenever you're ready.", 300f);
+       // newLevel.addType(TrashManager.TRASHTYPE.MILK);
+      //  newLevel.addType(TrashManager.TRASHTYPE.CEREAL);
+        newLevel.addType(TrashManager.TRASHTYPE.MASON);
+        newLevel.addType(TrashManager.TRASHTYPE.SODA);
+        newLevel.addType(TrashManager.TRASHTYPE.NEWSPAPER);
+
+       // newLevel.addType(TrashManager.TRASHTYPE.PIZZA);
+        newLevel.addType(TrashManager.TRASHTYPE.BANANA);
+        newLevel.addType(TrashManager.TRASHTYPE.STRAW);
+      //  newLevel.addType(TrashManager.TRASHTYPE.BAG);
+        newLevel.addType(TrashManager.TRASHTYPE.WRAP);
+
+        allLevels.Add(newLevel);
+
+        newLevel = new LevelInfo("Level 2", "Learn how to dispose more types of materials!", 300f);
         newLevel.addType(TrashManager.TRASHTYPE.MILK);
         newLevel.addType(TrashManager.TRASHTYPE.CEREAL);
         newLevel.addType(TrashManager.TRASHTYPE.MASON);
         newLevel.addType(TrashManager.TRASHTYPE.SODA);
         newLevel.addType(TrashManager.TRASHTYPE.NEWSPAPER);
+
         newLevel.addType(TrashManager.TRASHTYPE.PIZZA);
         newLevel.addType(TrashManager.TRASHTYPE.BANANA);
         newLevel.addType(TrashManager.TRASHTYPE.STRAW);
         newLevel.addType(TrashManager.TRASHTYPE.BAG);
         newLevel.addType(TrashManager.TRASHTYPE.WRAP);
 
-
         allLevels.Add(newLevel);
 
-        newLevel = new LevelInfo("Level 2", "Interesting lore of second level", 300f);
+        newLevel = new LevelInfo("Level 3", "This level is challenging!", 300f);
         newLevel.addType(TrashManager.TRASHTYPE.MILK);
+        newLevel.addType(TrashManager.TRASHTYPE.CEREAL);
+        newLevel.addType(TrashManager.TRASHTYPE.MASON);
+        newLevel.addType(TrashManager.TRASHTYPE.SODA);
+        newLevel.addType(TrashManager.TRASHTYPE.NEWSPAPER);
 
-        allLevels.Add(newLevel);
-
-        newLevel = new LevelInfo("Level 3", "Interesting lore of third level", 300f);
+        newLevel.addType(TrashManager.TRASHTYPE.PIZZA);
+        newLevel.addType(TrashManager.TRASHTYPE.BANANA);
+        newLevel.addType(TrashManager.TRASHTYPE.STRAW);
         newLevel.addType(TrashManager.TRASHTYPE.BAG);
+        newLevel.addType(TrashManager.TRASHTYPE.WRAP);
 
         allLevels.Add(newLevel);
 
