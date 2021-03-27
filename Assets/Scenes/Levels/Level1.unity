@@ -1369,6 +1369,12 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1778996516}
+    - target: {fileID: 4142687359780823351, guid: 3c0b497a7ddfeb24fa74350044ff5fe1,
+        type: 3}
+      propertyPath: sliderPrefab
+      value: 
+      objectReference: {fileID: 6355738168037645706, guid: bdf2c0642685c46359f30f3b3325b90a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c0b497a7ddfeb24fa74350044ff5fe1, type: 3}
 --- !u!1001 &3669409073018614230

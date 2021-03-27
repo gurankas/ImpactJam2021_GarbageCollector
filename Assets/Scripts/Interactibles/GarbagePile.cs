@@ -17,19 +17,26 @@ public class GarbagePile : Interactable
 
     public override void Interact(Transform other, Interactable otherObject, GameObject origin)
     {
-        int randomIndex = Random.Range(0, _levelInfo.trashItems.Count);
-
-        TrashManager.TRASHTYPE newTrash = _levelInfo.trashItems[randomIndex];
-
-        GameObject newPrefab = null;
-        gameManager.trashtypePrefab.TryGetValue(newTrash, out newPrefab);
-
-        if(newPrefab != null)
+        if (origin.GetComponent<PlayerController>()._currentPickupItem == null)
         {
-            GameObject newItem = Instantiate(newPrefab, origin.transform);
-            newItem.transform.SetParent(null);/*
-            newItem.transform.position = origin.GetComponent<PlayerController>()._hand.transform.position;
-            origin.GetComponent<PlayerController>().SetPickupItem(newItem);*/
+
+            int randomIndex = Random.Range(0, _levelInfo.trashItems.Count);
+
+            TrashManager.TRASHTYPE newTrash = _levelInfo.trashItems[randomIndex];
+
+            GameObject newPrefab = null;
+            gameManager.trashtypePrefab.TryGetValue(newTrash, out newPrefab);
+
+            if (newPrefab != null)
+            {
+                GameObject newItem = Instantiate(newPrefab, gameObject.transform);
+                newItem.transform.localPosition = Vector3.zero;
+                newItem.transform.SetParent(null);
+
+                newItem.GetComponent<Pickable>().Interact(origin.GetComponent<PlayerController>()._hand, null, gameObject);
+                newItem.GetComponent<Pickable>().Grounded = false;
+
+            }
         }
     }
 }
