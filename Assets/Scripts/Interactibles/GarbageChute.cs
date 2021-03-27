@@ -13,6 +13,9 @@ public class GarbageChute : Interactable
     [SerializeField]
     private AudioClip _correctSFX;
 
+    [SerializeField]
+    private AudioClip _errorSFX;
+
     private MotherNature _motherNature;
     private GameManager _gameManager;
     private AudioSource _as;
@@ -76,6 +79,7 @@ public class GarbageChute : Interactable
                 else
                 {
                     // Debug.Log("can't dispose off yet");
+                    _as.PlayOneShot(_errorSFX);
                     _motherNature.gameObject.SetActive(true);
                     _motherNature.GiveIncorrectDisposalFeedback();
                 }

@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskDuration: 8
+  slider: {fileID: 6355738167875764383}
 --- !u!1 &6355738168037645706
 GameObject:
   m_ObjectHideFlags: 0

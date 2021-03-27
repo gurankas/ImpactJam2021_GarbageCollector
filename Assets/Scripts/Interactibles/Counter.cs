@@ -21,14 +21,14 @@ public class Counter : Interactable
                 _currentItem = otherObject.GetComponent<Pickable>();
                 otherObject.transform.parent = _itemPos;
                 otherObject.transform.localPosition = Vector3.zero;
-                Debug.Log("counter interaction on");
+                // Debug.Log("counter interaction on");
             }
             else
             {
                 otherObject.transform.parent = null;
                 otherObject.transform.localScale = Vector3.one;
                 _currentItem = null;
-                Debug.Log("counter interaction off");
+                // Debug.Log("counter interaction off");
             }
         }
     }
