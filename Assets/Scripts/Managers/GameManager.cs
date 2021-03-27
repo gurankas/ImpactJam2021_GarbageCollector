@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         } else
         {
            // Debug.Log("Game Over");
-            if (!scoreHistory.ContainsKey(levelNumber) || scoreHistory[levelNumber] != score)
+            if (!scoreHistory.ContainsKey(levelNumber) || scoreHistory[levelNumber] <= score)
             {
                 scoreHistory.Add(levelNumber, score);
             }

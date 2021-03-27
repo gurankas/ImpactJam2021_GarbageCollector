@@ -30384,6 +30384,11 @@ PrefabInstance:
       propertyPath: slidingBar
       value: 
       objectReference: {fileID: 1032280379}
+    - target: {fileID: 6713225379458720533, guid: ded5d80ac20416f48a8662a1219f06d2,
+        type: 3}
+      propertyPath: levelNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7422974686825334306, guid: ded5d80ac20416f48a8662a1219f06d2,
         type: 3}
       propertyPath: m_Enabled
