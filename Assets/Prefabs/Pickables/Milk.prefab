@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 6210437614009087436}
-  extraSteps: 01000000
+  extraSteps: 
   crushedSprite: {fileID: 21300000, guid: 0ca20938ab7e604418145ca3ada28999, type: 3}
   crushedOutlineSprite: {fileID: 6144738565811689094}
   trashType: 0
