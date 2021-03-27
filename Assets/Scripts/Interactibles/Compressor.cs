@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class Sink : Interactable
+public class Compressor : Interactable
 {
     [SerializeField]
     private Transform _itemPos;
@@ -17,8 +17,10 @@ public class Sink : Interactable
     private float _timeRemaining;
     private AudioSource _as;
 
+    public GameObject canvas;
     public GameObject sliderPrefab;
     private GameObject _currentSlider;
+    private Slider _currentSliderValue;
 
     public override void Awake()
     {
@@ -32,7 +34,7 @@ public class Sink : Interactable
         if (otherObject is Pickable)
         {
             Pickable pickable = (Pickable)otherObject;
-            if (pickable.extraSteps.Contains(Pickable.EXTRASTEPS.SINK))
+            if (pickable.extraSteps.Contains(Pickable.EXTRASTEPS.COMPRESSOR) && !pickable.extraSteps.Contains(Pickable.EXTRASTEPS.SINK))
             {
                 if (_currentItem == null)
                 {
@@ -46,7 +48,7 @@ public class Sink : Interactable
                     _timeRemaining = timeToComplete;
                     Transform newTransform = transform;
                     _currentSlider = Instantiate(sliderPrefab, transform);
-                    _currentSlider.transform.localPosition = new Vector3(0,0, _currentSlider.transform.position.z);
+                    _currentSlider.transform.localPosition = new Vector3(0, 0, _currentSlider.transform.position.z);
                     _currentSlider.transform.GetChild(0).GetComponent<TaskProgress>().taskDuration = timeToComplete;
 
                 }
@@ -66,7 +68,7 @@ public class Sink : Interactable
             else
             {
                 ((Pickable)_currentItem)._canPickup = true;
-                ((Pickable)_currentItem).extraSteps.Remove(Pickable.EXTRASTEPS.SINK);
+                ((Pickable)_currentItem).extraSteps.Remove(Pickable.EXTRASTEPS.COMPRESSOR);
             }
 
         }

@@ -39,6 +39,7 @@ public class TrashManager : MonoBehaviour
 
     private static void populateList()
     {
+        Debug.Log("populate");
         _typeToCatMap.Add(new itemDetails(TRASHTYPE.MILK, "Milk carton", TRASHCATS.RECYCLABLE, "Paper / Needs rinsing", 200, -100));
         _typeToCatMap.Add(new itemDetails(TRASHTYPE.MASON, "Mason jar", TRASHCATS.RECYCLABLE, "Glass / Needs rinsing", 200, -100));
         _typeToCatMap.Add(new itemDetails(TRASHTYPE.CEREAL, "Cereal box", TRASHCATS.RECYCLABLE, "Cardboard", 200, -100));
@@ -50,6 +51,7 @@ public class TrashManager : MonoBehaviour
         _typeToCatMap.Add(new itemDetails(TRASHTYPE.STRAW, "Plastic straw", TRASHCATS.TRASH, "Plastic", 200, -100));
         _typeToCatMap.Add(new itemDetails(TRASHTYPE.BAG, "Plastic bag", TRASHCATS.TRASH, "Plastic", 200, -100));
         _typeToCatMap.Add(new itemDetails(TRASHTYPE.WRAP, "Cling wrap", TRASHCATS.TRASH, "Plastic", 200, -100));
+
     }
 
 
@@ -64,7 +66,7 @@ public class TrashManager : MonoBehaviour
                 return details;
             }
         }
-
+        Debug.Log("end");
         return new itemDetails();
     }
 

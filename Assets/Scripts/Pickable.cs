@@ -77,6 +77,7 @@ public class Pickable : Interactable
 
     public enum EXTRASTEPS
     {
-        SINK
+        SINK,
+        COMPRESSOR
     }
 }
