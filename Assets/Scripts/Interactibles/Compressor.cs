@@ -17,10 +17,8 @@ public class Compressor : Interactable
     private float _timeRemaining;
     private AudioSource _as;
 
-    public GameObject canvas;
     public GameObject sliderPrefab;
     private GameObject _currentSlider;
-    private Slider _currentSliderValue;
 
     public override void Awake()
     {
