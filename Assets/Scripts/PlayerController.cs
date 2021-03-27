@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask _pickupMask;
 
-    [SerializeField]
-    private Transform _hand;
+    public Transform _hand;
 
     [SerializeField]
     private GameObject _renderer;
@@ -33,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _boxSize;
     private IsometricCharacterRenderer _isoRenderer;
     private Interactable _currentInteractItem;
-    private Pickable _currentPickupItem;
+    public Pickable _currentPickupItem;
 
 
     private void Awake()
@@ -146,7 +145,18 @@ public class PlayerController : MonoBehaviour
 
     public void PickupItem(GameObject newItem)
     {
-        _currentPickupItem = newItem.GetComponent<Pickable>();
+        if (_currentPickupItem.Grounded == true)
+        {
+            _currentPickupItem = newItem.GetComponent<Pickable>();
+            // Debug.Log($"Picking up {_currentPickupItem.name}");
+            _currentPickupItem.Grounded = false;
+        }
+        else
+        {
+            _currentPickupItem.Grounded = true;
+            _currentPickupItem.StopInteraction();
+
+        }
     }
 
     private Vector2 DetermineDirection(int lastDirection)
