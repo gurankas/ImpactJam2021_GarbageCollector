@@ -7,15 +7,15 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<TrashManager.TRASHTYPE, GameObject> trashtypePrefab = new RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<TrashManager.TRASHTYPE, GameObject>();
 
+    public static Dictionary<int, int> scoreHistory = new Dictionary<int, int>();
+    public RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<TrashManager.TRASHTYPE, GameObject> trashtypePrefab = new RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<TrashManager.TRASHTYPE, GameObject>();
 
     [HideInInspector]
     public float gameTime;
     private float _remainingTime;
     private float _slideValue;
 
-    [HideInInspector]
     public int score;
 
     public Slider slidingBar;
@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public GameObject recyclableList, trashList, recipeCardPrefab;
 
     public void Start() {
+        score = 0;
+        scoreText.text = "0";
+
         if(levelNumber == 0)
         populateReceipeList();
 
@@ -44,10 +47,21 @@ public class GameManager : MonoBehaviour
             slidingBar.value = _slideValue;
         } else
         {
-            Debug.Log("Game Over");
+           // Debug.Log("Game Over");
+            if (!scoreHistory.ContainsKey(levelNumber) || scoreHistory[levelNumber] != score)
+            {
+                scoreHistory.Add(levelNumber, score);
+            }
+            if (SceneManager.GetActiveScene().name != "EndLevel")
+            {
+                SceneManager.LoadScene("EndLevel");
+            }
         }
 
-        scoreText.text = score.ToString();
+        if (!scoreText == null)
+        {
+            scoreText.text = score.ToString();
+        }
     }
 
     public void populateReceipeList()
@@ -79,5 +93,8 @@ public class GameManager : MonoBehaviour
         _newCard.transform.GetChild(0).GetComponent<Image>().sprite = details.icon;
         _newCard.transform.GetChild(1).GetComponent<TMP_Text>().text = details.name;
     }
+
+
+ 
 
 }
