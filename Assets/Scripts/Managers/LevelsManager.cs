@@ -13,7 +13,7 @@ public class LevelsManager : MonoBehaviour
 
     private void Awake()
     {
-        LevelInfo newLevel = new LevelInfo("Level 1", "Let's start with the basics! Remember how to dispose these materials, then press Play whenever you're ready.", 10f);
+        LevelInfo newLevel = new LevelInfo("Level 1", "Let's start with the basics! Remember how to dispose these materials, then press Play whenever you're ready.", 300f);
        // newLevel.addType(TrashManager.TRASHTYPE.MILK);
       //  newLevel.addType(TrashManager.TRASHTYPE.CEREAL);
         newLevel.addType(TrashManager.TRASHTYPE.MASON);
