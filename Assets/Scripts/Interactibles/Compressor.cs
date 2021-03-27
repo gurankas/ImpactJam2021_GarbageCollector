@@ -68,6 +68,9 @@ public class Compressor : Interactable
                 _currentItem._canPickup = true;
                 _currentItem.extraSteps.Remove(Pickable.EXTRASTEPS.COMPRESSOR);
                 _currentItem.GetComponent<SpriteRenderer>().sprite = _currentItem.crushedSprite;
+                _currentItem.transform.GetComponentInChildren<DummyOutline>(true).gameObject.SetActive(true);
+                _currentItem.SwitchHighlight(_currentItem.transform.GetComponentInChildren<DummyOutline>().gameObject);
+                _currentItem = null;
             }
 
         }

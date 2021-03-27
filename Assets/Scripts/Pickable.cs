@@ -7,6 +7,7 @@ public class Pickable : Interactable
     public List<EXTRASTEPS> extraSteps = new List<EXTRASTEPS>();
 
     public Sprite crushedSprite;
+    public GameObject crushedOutlineSprite;
 
     private float _distance;
 
@@ -74,8 +75,6 @@ public class Pickable : Interactable
     {
         Destroy(gameObject);
     }
-
-
 
     public enum EXTRASTEPS
     {

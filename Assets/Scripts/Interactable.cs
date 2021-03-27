@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour, IInteractable
     {
 
     }
-    
+
     virtual public void Interact(Transform other, Interactable otherObject, GameObject origin)
     {
     }
@@ -27,5 +27,10 @@ public class Interactable : MonoBehaviour, IInteractable
     public void SetActiveHighlight(bool value)
     {
         _highlight.gameObject.SetActive(value);
+    }
+
+    public void SwitchHighlight(GameObject newHighlight)
+    {
+        _highlight = newHighlight;
     }
 }
