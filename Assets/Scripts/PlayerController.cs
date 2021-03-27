@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("moveY", inputVector.y);
         _animator.SetFloat("speed", inputVector.sqrMagnitude);
 
-        if (inputVector.x >= 0.5 || inputVector.x <= -0.5 || inputVector.y >= 0.5 || inputVector.y <= -0.5)
+        if (inputVector.x >= 0.2 || inputVector.x <= -0.2 || inputVector.y >= 0.2 || inputVector.y <= -0.2)
         {
             _animator.SetFloat("lastMoveX", inputVector.x);
             _animator.SetFloat("lastMoveY", inputVector.y);

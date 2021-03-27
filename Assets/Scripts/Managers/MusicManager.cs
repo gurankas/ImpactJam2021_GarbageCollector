@@ -34,6 +34,7 @@ public class MusicManager : MonoBehaviour
             print($"Current active scene is {_currentScene.name}");
             if (_currentScene.name == "Level1")
             {
+                _as.Stop();
                 _as.PlayOneShot(_gameMusic);
             }
         }

@@ -19,7 +19,6 @@ public class Compressor : Interactable
 
     public GameObject sliderPrefab;
     private GameObject _currentSlider;
-    private Slider _currentSliderValue;
 
     public override void Awake()
     {
