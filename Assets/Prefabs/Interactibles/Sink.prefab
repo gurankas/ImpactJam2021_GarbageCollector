@@ -105,7 +105,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 9e265e6350d4e4045933ed6a411e0f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -133,7 +133,6 @@ MonoBehaviour:
   _itemPos: {fileID: 4194622910086470350}
   _sinkSFX: {fileID: 8300000, guid: ea69c9e1c95b770418aaa24726edc8e3, type: 3}
   timeToComplete: 8
-  canvas: {fileID: 0}
   sliderPrefab: {fileID: 6355738168037645706, guid: bdf2c0642685c46359f30f3b3325b90a,
     type: 3}
 --- !u!61 &1807830321799343121

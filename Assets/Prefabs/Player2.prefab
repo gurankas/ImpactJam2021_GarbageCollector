@@ -260,7 +260,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 10
 --- !u!114 &1458090825716896352
 MonoBehaviour:
   m_ObjectHideFlags: 0
