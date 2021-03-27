@@ -6,6 +6,8 @@ public class Pickable : Interactable
 {
     public List<EXTRASTEPS> extraSteps = new List<EXTRASTEPS>();
 
+    public Sprite crushedSprite;
+
     private float _distance;
 
     private PlayerController _player;
