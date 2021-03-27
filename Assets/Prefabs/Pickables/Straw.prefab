@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2130146985
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: 1e657db81f576c440ae0f27f9fa6fa75,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -122,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _highlight: {fileID: 5187081289873773547}
   extraSteps: 
+  crushedSprite: {fileID: 0}
+  crushedOutlineSprite: {fileID: 0}
   trashType: 7
   trashCategory: 0
   Grounded: 1
