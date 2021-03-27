@@ -143,22 +143,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PickupItem(GameObject newItem)
-    {
-        if (_currentPickupItem.Grounded == true)
-        {
-            _currentPickupItem = newItem.GetComponent<Pickable>();
-            // Debug.Log($"Picking up {_currentPickupItem.name}");
-            _currentPickupItem.Grounded = false;
-        }
-        else
-        {
-            _currentPickupItem.Grounded = true;
-            _currentPickupItem.StopInteraction();
-
-        }
-    }
-
     private Vector2 DetermineDirection(int lastDirection)
     {
         switch (lastDirection)

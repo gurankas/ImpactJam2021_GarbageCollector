@@ -47,12 +47,13 @@ public class Sink : Interactable
                     _timeRemaining = timeToComplete;
 
                     _currentSlider = Instantiate(sliderPrefab);
-                    _currentSliderValue = _currentSlider.GetComponent<Slider>();
+
+                    _currentSliderValue = _currentSlider.transform.GetChild(0).GetComponent<Slider>();
+
                     _currentSliderValue.value = 1f;
                 }
                 else if (_timeRemaining <= 0)
                 {
-
                     otherObject.transform.parent = null;
                     otherObject.transform.localScale = Vector3.one;
                     _currentItem = null;
@@ -63,7 +64,6 @@ public class Sink : Interactable
                 else
                 {
                     Debug.Log("Not ready");
-
                 }
             }
         }
@@ -85,6 +85,8 @@ public class Sink : Interactable
             else
             {
                 Destroy(_currentSlider);
+                _currentItem.transform.GetChild(1).gameObject.SetActive(true);
+
                 _currentSliderValue = null;
                 ((Pickable)_currentItem)._canPickup = true;
             }
