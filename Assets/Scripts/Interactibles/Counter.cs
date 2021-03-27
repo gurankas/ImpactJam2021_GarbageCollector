@@ -14,19 +14,22 @@ public class Counter : Interactable
 
     public override void Interact(Transform other, Interactable otherObject, GameObject origin)
     {
-        if (_currentItem == null)
+        if (otherObject != null)
         {
-            _currentItem = otherObject.GetComponent<Pickable>();
-            otherObject.transform.parent = _itemPos;
-            otherObject.transform.localPosition = Vector3.zero;
-            Debug.Log("counter interaction on");
-        }
-        else
-        {
-            otherObject.transform.parent = null;
-            otherObject.transform.localScale = Vector3.one;
-            _currentItem = null;
-            Debug.Log("counter interaction off");
+            if (_currentItem == null)
+            {
+                _currentItem = otherObject.GetComponent<Pickable>();
+                otherObject.transform.parent = _itemPos;
+                otherObject.transform.localPosition = Vector3.zero;
+                Debug.Log("counter interaction on");
+            }
+            else
+            {
+                otherObject.transform.parent = null;
+                otherObject.transform.localScale = Vector3.one;
+                _currentItem = null;
+                Debug.Log("counter interaction off");
+            }
         }
     }
 
