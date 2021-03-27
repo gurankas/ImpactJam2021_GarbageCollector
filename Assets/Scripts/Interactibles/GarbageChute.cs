@@ -23,8 +23,12 @@ public class GarbageChute : Interactable
         _as = GetComponent<AudioSource>();
         _gameManager = FindObjectOfType<GameManager>();
         _motherNature = FindObjectOfType<MotherNature>();
+        // print($"{_motherNature.gameObject.name}");
+    }
+
+    private void Start()
+    {
         _motherNature.gameObject.SetActive(false);
-        print($"{_motherNature.gameObject.name}");
     }
 
     public override void Interact(Transform other, Interactable otherObject, GameObject origin)
@@ -44,7 +48,7 @@ public class GarbageChute : Interactable
                     _motherNature.gameObject.SetActive(true);
                     if (dumpItem.trashCategory.Equals(_category))
                     {
-                        Debug.Log("That is the correct bin");
+                        // Debug.Log("That is the correct bin");
                         _as.PlayOneShot(_correctSFX);
                         _gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsPositive;
                         _motherNature.GivePositiveFeedback();
@@ -54,7 +58,7 @@ public class GarbageChute : Interactable
                     else
                     {
                         _gameManager.score += TrashManager.getDetails(dumpItem.trashType).pointsNegative;
-                        Debug.Log("Wrong bin");
+                        // Debug.Log("Wrong bin");
 
                         _as.PlayOneShot(_wrongSFX);
                         if (dumpItem.trashCategory.Equals(TrashManager.TRASHCATS.RECYCLABLE))
@@ -67,6 +71,13 @@ public class GarbageChute : Interactable
                         }
                     }
                     dumpItem.SelfDestruct();
+                }
+                //some steps are pending so give incorrect disposal feedback
+                else
+                {
+                    // Debug.Log("can't dispose off yet");
+                    _motherNature.gameObject.SetActive(true);
+                    _motherNature.GiveIncorrectDisposalFeedback();
                 }
             }
         }
