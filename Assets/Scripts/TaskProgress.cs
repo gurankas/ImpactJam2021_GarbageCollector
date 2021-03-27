@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TaskProgress : MonoBehaviour
 {
     public float taskDuration = 10f; 
-    private Slider slider;
+    public Slider slider;
     private float timePassed = 0f;
 
     // Start is called before the first frame update
